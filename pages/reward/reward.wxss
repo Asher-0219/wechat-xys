@@ -1,0 +1,70 @@
+.list {
+  padding: 0 24rpx;
+  height: 100rpx;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  line-height: 100rpx;
+  position: relative;
+}
+
+.icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  position: relative;
+  top: 15rpx;
+}
+
+.content {
+  font-size: 24rpx;
+}
+
+.name {
+  color: #101010;
+  font-size: 26rpx;
+}
+
+.number {
+  color: #fec842;
+  margin-right: 6rpx;
+}
+
+.reward-num image {
+  width: 24rpx;
+  height: 24rpx;
+  position: relative;
+  top: 5rpx;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  background: #dfdfdf;
+  z-index: 999;
+  height: 1px;
+  right: 0;
+  left: 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  color: #fec942;
+  font-size: 26rpx;
+  left: 310rpx;
+  justify-content: center;
+}
+
+.footer text {
+  margin-bottom: 30rpx;
+}
+
+.footer image {
+  width: 106rpx;
+  height: 106rpx;
+}

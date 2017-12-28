@@ -1,0 +1,21 @@
+<scroll-view style="height:{{windowHeight-100}}px;" lower-threshold="400" scroll-y="true"  bindscrolltolower="lower">
+<block wx:for="{{rewardList}}" wx:key="{{index}}">
+  <view class="list">
+  <view class="line"></view>
+    <view>
+      <image class="icon" src="{{item.avatar}}"></image>
+      <text class="name">{{item.userName}}</text>
+    </view>
+    <view class="content">
+      <view class="reward-num">
+        <text class="number">+{{item.number}}</text>
+        <image src="../../img/personal_center_task@3x.png"></image>
+      </view>
+    </view>
+  </view>
+</block>
+</scroll-view>
+<view class="footer">
+    <text>{{all}}人打赏</text>
+    <image src="../../img/topic_award_button@2x.png"></image>
+</view>

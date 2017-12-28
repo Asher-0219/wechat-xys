@@ -1,0 +1,171 @@
+<view class="mytask-tab">
+	<view bindtap="switchTask" class="mytask-tab-item {{special?'':'mytask-tab-border'}}">我的任务</view>
+	<view bindtap="switchTask" class="mytask-tab-item {{special?'mytask-tab-border':''}}">特殊任务</view>
+</view>
+<view class="mytask-tab-show" wx-if="{{!special}}">
+	<view class="mytask">
+		<view class="mt-past">
+			<view class="mt-img">
+				<image src="/img/task/personal_my_task_sign@3x.png" />
+			</view>
+			<view class="mt-text">
+				<view>每日签到</view>
+				<view wx-if="{{todayInfo.todayTimes==0}}">您还没有签到赶快去签到吧</view>
+				<view wx-if="{{todayInfo.todayTimes>0&&todayInfo.todayTimes<7}}">您已连续签到{{todayInfo.todayTimes}}天，再接再厉哦！</view>
+				<view wx-if="{{todayInfo.todayTimes==7}}">您已连续签到7天，赶快领取15U币大奖吧！</view>
+			</view>
+			<view class="mt-button mtp-button" wx-if="{{todayInfo.todayIs==0}}" data-flag="1" bindtap="mtpast">签到</view>
+			<view class="mt-button mtp-buttoned" wx-if="{{todayInfo.todayIs==1}}">已签到</view>
+		</view>
+		<view class="mtu-title">每日任务</view>
+		<view class="mt-ul">
+			<view wx:for="{{data}}" wx:for-key="{{index}}">
+				<view class="mt-img" data-rid="{{item.rid}}" bindtap="goTaskDetail">
+					<image src="{{imgs[index-1]}}" />
+				</view>
+				<view class="mt-text" data-rid="{{item.rid}}" bindtap="goTaskDetail">
+					<view>
+						<text>{{item.rulename}}</text>
+						<text id="mt-countdown" wx-if="{{item.finish==0&&index==1&&item.dateline>=0}}">{{countDownTime}}</text>
+					</view>
+					<view>
+						{{text[index-1].a}}{{item.handlenum}}{{text[index-1].b}}，奖励
+						<text wx-if="{{item.expnum!=0}}">{{item.expnum}}EXP</text>
+						<text wx-if="{{item.expnum==0}}">{{item.expu}}U币</text>
+					</view>
+				</view>
+				<view class="mt-button mtb-normal" wx-if="{{item.finish==1}}">已完成</view>
+				<block wx-if="{{item.finish==0}}">
+					<view class="mt-button mtb-ex" wx-if="{{index==1&&item.dateline==0&&item.times<2}}" data-item-data="{{'1-'+item.rid+'-data-'+index}}" catchtap="missionPost">打卡</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times!=0&&index==1&&item.dateline!=0&&item.times<item.handlenum}}">{{item.times}}/{{item.handlenum}}</view>
+					<view class="mt-button mtb-normal" wx-if="{{item.times<item.handlenum&&index!=1}}">{{item.times}}/{{item.handlenum}}</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times>=item.handlenum&&index!=1}}" data-item-data="{{'2-'+item.rid+'-data-'+index}}" catchtap="missionPost">
+						<text>领取奖励</text>
+					</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times>=2&&index==1&&item.dateline<=0}}" data-item-data="{{'2-'+item.rid+'-data-'+index}}" catchtap="missionPost">
+						<text>领取奖励</text>
+					</view>
+				</block>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="mtm-mask" data-flag="0" bindtap="mtpast" wx-if="{{show}}" transition="mtm">
+	<view class="mtm-content">
+		<view class="mtm-past">
+			<image src="/img/task/personal_my_sign_background@3x.png" />
+			<view class="mtm-icon">
+				<view class="mtm-ul">
+					<view wx:for="{{signData}}" wx:for-key="index" class="{{index>3?'mtm-li3':''}}">
+						<block wx-if="{{item.finish==0&&index==signTodayIs-1}}">
+							<image src="{{signInfo[index].un}}" />
+							<view class="mtm-text">签到</view>
+						</block>
+						<block wx-if="{{item.finish==1&&index<=signTodayIs-1}}">
+							<image src="{{signInfo[index].ed}}" />
+							<view class="mtm-text">已签到</view>
+						</block>
+						<block wx-if="{{item.finish==0&&index>signTodayIs-1}}">
+							<image src="{{signInfo[index].un}}" />
+							<view class="mtm-text">第{{signInfo[index].text}}天</view>
+						</block>
+					</view>
+				</view>
+			</view>
+			<view class="mtm-submit">
+				<view>只有连续签到7天，才可以拿到最终大奖哦</view>
+				<view class="mtms-btn mtms-btned" wx-if="{{signData[signTodayIs-1].finish!=0}}">已签到</view>
+				<view class="mtms-btn mtms-btnun" wx-if="{{signData[signTodayIs-1].finish==0}}" data-item-data="{{'1-'+signData[signTodayIs-1].rid+'-signData-'+(signTodayIs-1)}}"  bindtap="missionPost">立即签到</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="mtm-mask" transition="mtm" wx-if="{{!todayIsclick&&todayMstimes>=5}}">
+	<view class="mtm-new-content">
+		<view class="mtm-new-past">
+			<view class="mtm-new-img">
+				<image src="/img/task/guide_task_1.png" alt="" />
+			</view>
+		</view>
+		<view class="mtm-new-btn" bindtap="goTaskProcess">
+			我知道了
+		</view>
+	</view>
+</view>
+<view class="mytask-tab-show" wx-if="{{special}}">
+	<view class="tp-head">
+		<view class="tph-img">
+			<image src="/img/task/personal_task_process_icon@3x.png" alt="" />
+			<view>每日任务已完成{{finishNum}}/7</view>
+		</view>
+		<view>
+			完成5项每日任务后，即可解锁今日特殊任务
+		</view>
+	</view>
+	<view class="tpu-title">特殊任务</view>
+	<view class="tp-ul">
+		<view wx:for="{{specialData}}">
+			<view class="mt-img" data-rid="{{item.rid}}" bindtap="goTaskDetail">
+				<image src="{{specialImgs[index-1]}}" alt="" />
+			</view>
+			<view class="mt-text" data-rid="{{item.rid}}" bindtap="goTaskDetail">
+				<view>
+					{{item.rulename}}
+					<text id="tp-countdown" wx-if="{{item.finish==0&&index==1&&item.dateline>=0}}">{{specialCountDownTime}}</text>
+				</view>
+				<view>
+					<text class="external-text" wx-if="{{index!=2}}">{{specialText[index-1]}} 奖励</text>
+					<text class="external-text" wx-if="{{index==2}}">赠送他人{{item.otherData}}x1 奖励</text>
+					<text wx-if="{{item.expnum!=0}}">{{item.expnum}}EXP</text>
+					<text wx-if="{{item.expnum==0}}">{{item.expu}}U币</text>
+				</view>
+			</view>
+			<view class="mt-button mtb-normal" wx-if="{{taskUnlock==0}}">未解锁</view>
+			<block wx-if="{{taskUnlock==1}}">
+				<view class="mt-button mtb-normal" wx-if="{{item.finish==1}}">已完成</view>
+				<block wx-if="{{item.finish==0}}">
+					<view class="mt-button mtb-ex" wx-if="{{index==1&&item.dateline==0&&item.times<5}}" data-item-data="{{'1-'+item.rid+'-specialData-'+index}}" catchtap="specialMissionPost">打卡</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times!=0&&index==1&&item.dateline!=0}}">{{item.times}}/{{item.handlenum}}</view>
+					<view class="mt-button mtb-normal" wx-if="{{item.times<item.handlenum&&index!=1}}">{{item.times}}/{{item.handlenum}}</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times>=item.handlenum&&index!=1}}" data-item-data="{{'2-'+item.rid+'-specialData-'+index}}" catchtap="specialMissionPost">
+						<text>领取奖励</text>
+					</view>
+					<view class="mt-button mtb-ex" wx-if="{{item.times>=5&&index==1&&item.dateline<=0}}" data-item-data="{{'2-'+item.rid+'-specialData-'+index}}" catchtap="specialMissionPost">
+						<text>领取奖励</text>
+					</view>
+				</block>
+			</block>
+		</view>
+	</view>
+	<view class="tp-achieve">成就任务<text>(等级达到D1才可能解锁成就任务)</text></view>
+	<view class="tpa-ul">
+		<view class="{{specialActive==0?'active':''}}" data-id='0' bindtap="liclick">接通率</view>
+		<view class="{{specialActive==1?'active':''}}" data-id="1" bindtap="liclick">累计发帖</view>
+		<view class="{{specialActive==2?'active':''}}" data-id="2" bindtap="liclick">累计点赞</view>
+		<view class="{{specialActive==3?'active':''}}" data-id="3" bindtap="liclick">累计通话</view>
+	</view>
+	<view class="tpau-li">
+		<view class="tpaul-ul">
+			<view wx-if="{{achInfo.taskUnlock==1}}" class="tpaul-first">
+				<view class="mt-img">
+					<image src="{{achImgs[achInfo.type]}}" alt="" />
+					</view>
+				<view wx-if="{{achInfo.type==0}}">当前接通率为{{achInfo.sum}}%</view>
+				<view wx-if="{{achInfo.type==1}}">当前发帖数{{achInfo.sum}}%</view>
+				<view wx-if="{{achInfo.type==2}}">当前评论和点赞数为{{achInfo.sum}}+{{achInfo.otherySum}}</view>
+				<view wx-if="{{achInfo.type==3}}">当前累计通话时间为{{achInfo.sum}}分钟</view>
+			</view>
+			<view wx:for="{{achData}}">
+				<view class="mt-text">
+					<view>{{item.rulename}}</view>
+					<view>奖励<text>{{item.expnum}}EXP</text></view>
+				</view>
+				<view class="mt-button mtb-ex" wx-if="{{item.finish==3}}" data-item-data="{{'2-'+item.rid+'-achData-'+index}}" bindtap="specialMissionPost">领取</view>
+				<view class="mt-button mtb-normal" wx-if="{{item.finish==2}}">已完成</view>
+				<view class="mt-button mtb-normal" wx-if="{{item.finish==1}}">未达成</view>
+				<view class="mt-button mtb-normal" wx-if="{{item.finish==0}}">未解锁</view>
+			</view>
+		</view>
+	</view>
+</view>

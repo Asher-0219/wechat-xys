@@ -1,0 +1,23 @@
+.n-banner{
+    width: 100%;
+    height: 310rpx;
+}
+page{
+    background: #f5f5f7;
+}
+.n-container{
+    padding: 40rpx 30rpx 0 25rpx;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    background: #fff;
+}
+.n-title-icon{
+    width: 60rpx;
+    height: 32rpx;
+    margin-right: 13rpx;
+}
+.title-text{
+    font-size: 32rpx;
+    color: #101010;
+    font-weight: bold;
+}

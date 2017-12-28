@@ -1,0 +1,19 @@
+
+<!--pages/login/sms/sms.wxml-->
+<view class="content">
+  <view class="form">
+    <block wx:for="{{input}}" wx:key="{{index}}">
+      <input bindtap="border" type="number" bindinput="value" focus="{{focus}}" class="{{active==index?'active':''}}" data-active="{{index}}" maxlength="1" style="margin-right:{{index==3?'0':''}}" />
+    </block>
+  </view>
+</view>
+<view wx:if="{{correct==0}}" class="login">下一步</view>
+<view wx:if="{{correct==1}}" bindtap="login" class="login login-true">下一步</view>
+<view class="text">
+  <view style="margin-bottom:50rpx;">
+    <text style="margin-right:34rpx;color:#303030;">(+86){{id}}</text>
+    <text style="color:#959595;" wx:if="{{time>=0}}">{{time}}s重新发送</text><text bindtap="sendAgain" wx:if="{{time<0}}">重新发送</text>
+  </view>
+  <view>没有收到?使用语音验证</view>
+</view>
+<image class="banner" src="/img/login/sign_in_background@2x.png"></image>

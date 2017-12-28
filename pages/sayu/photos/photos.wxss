@@ -1,0 +1,9 @@
+.imgs image{
+    width: 244rpx;
+    height: 244rpx;
+    margin-top: 4.5rpx;
+    margin-left: 4.5rpx;
+}
+.imgs{
+    font-size: 0;
+}

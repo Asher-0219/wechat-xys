@@ -1,0 +1,115 @@
+.banner {
+  width: 100%;
+}
+
+.swiper-img {
+  width: 100%;
+  height: 100%;
+}
+
+.wx-swiper-dot::before {
+  color: #fff;
+}
+
+.down swiper {
+  height: 100%;
+}
+
+.wx-swiper-dot-active::before {
+  color: #ff2c29;
+}
+
+/*魅力榜*/
+
+.charm {
+  padding: 26rpx 28rpx 76rpx 28rpx;
+}
+
+.charm-title {
+  display: flex;
+  color: #ff7372;
+  font-size: 24rpx;
+  align-items: center;
+  margin-bottom: 54rpx;
+}
+
+.charm-title image {
+  width: 27rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+
+.icon {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  border: 30rpx solid #f5f5f7;
+}
+
+.list-item {
+  display: inline-block;
+  position: relative;
+  height: 200rpx;
+}
+
+.img {
+  width: 179rpx;
+  height: 50rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.i2 {
+  margin: 0 44rpx;
+}
+
+.line {
+  height: 12rpx;
+  width: 100%;
+  background: #fafafa;
+}
+.tuhao{
+    color: #fcae0e;
+}
+.zh .zh-item image {
+  width: 131rpx;
+  height: 130rpx;
+}
+.zh{
+    padding-bottom: 74rpx;
+}
+.zh-title {
+  padding-top: 26rpx;
+  padding-left: 28rpx;
+  margin-bottom: 54rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  color: #697ab2;
+}
+
+.zh-title image {
+  width: 27rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+.zh .zh-content{
+    display: flex;
+}
+.zh .zh-item {
+    position: relative;
+    display: flex;
+  margin: 0 56rpx;
+  height: 130rpx;
+  align-items: center;
+}
+.line-right{
+    width: 1px;
+    height: 60rpx;
+    background: #dfdfdf;
+    position: relative;
+    left: 56rpx;
+}

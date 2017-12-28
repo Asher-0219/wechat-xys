@@ -1,0 +1,6 @@
+{
+    "navigationBarBackgroundColor": "#f9f9f9",
+    "navigationBarTitleText": "帖子详情",
+    "navigationBarTextStyle":"#000",
+    "enablePullDownRefresh":true
+}

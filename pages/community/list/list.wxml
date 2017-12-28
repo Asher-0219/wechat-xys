@@ -1,0 +1,66 @@
+<swiper indicator-dots="true" class="banner" autoplay="true" interval="4000" duration="1000">
+  <swiper-item wx:for="{{imgs}}" bindtap="goPostDetail" wx:key="{{index}}" data-post-id="{{item.typeId}}">
+    <view class="swiper-img" style="background-image:url({{item.imgUrl}});background-size:cover"></view>
+  </swiper-item>
+</swiper>
+<view class="charm">
+  <view class="charm-title">
+    <image src="/img/community_charm@2x.png"></image>
+    <text>魅力榜</text>
+  </view>
+  <view class="list-content">
+    <view class="list-item" data-id="1" data-date="0" bindtap="showAction">
+      <image class="icon" src="{{list.todaycharm}}"></image>
+      <image class="img" src="/img/community_today@2x.png"></image>
+    </view>
+    <view class="list-item i2" data-id="1" data-date="1" bindtap="showAction">
+      <image class="icon" src="{{list.weekcharm}}"></image>
+      <image class="img" src="/img/community_week@2x.png"></image>
+    </view>
+    <view class="list-item" data-id="1" data-date="2" bindtap="showAction">
+      <image class="icon" src="{{list.totlecharm}}"></image>
+      <image class="img" src="/img/community_month@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="line"></view>
+<view class="charm">
+  <view class="charm-title tuhao">
+    <image src="/img/community_tycoon@2x.png"></image>
+    <text>土豪榜</text>
+  </view>
+  <view class="list-content">
+    <view class="list-item" data-id="2" data-date="0" bindtap="showAction">
+      <image class="icon" src="{{list.todaycharm}}"></image>
+      <image class="img" src="/img/community_today_1@2x.png"></image>
+    </view>
+    <view class="list-item i2" data-id="2" data-date="1" bindtap="showAction">
+      <image class="icon" src="{{list.weekcharm}}"></image>
+      <image class="img" src="/img/community_week_1@2x.png"></image>
+    </view>
+    <view class="list-item" data-id="2" data-date="2" bindtap="showAction">
+      <image class="icon" src="{{list.totlecharm}}"></image>
+      <image class="img" src="/img/community_montjh_1@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="line"></view>
+<view class="zh">
+  <view class="zh-title">
+    <image src="/img/community_audio@3x.png"></image>
+    <text>社区综合榜</text>
+  </view>
+  <view class="zh-content">
+    <view class="zh-item" bindtap="showPost" data-type="posts">
+      <image class="zh-img" src="{{list.posts}}"></image>
+      <view class="line-right"></view>
+    </view>
+    <view class="zh-item z2" bindtap="showPost" data-type="ren">
+      <image class="zh-img" src="{{list.ren}}"></image>
+      <view class="line-right"></view>
+    </view>
+    <view class="zh-item" bindtap="showPost" data-type="threads">
+      <image class="zh-img" src="{{list.threads}}"></image>
+    </view>
+  </view>
+</view>

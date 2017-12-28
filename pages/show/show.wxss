@@ -1,0 +1,334 @@
+.title {
+  position: relative;
+  width: 100%;
+  height: 315rpx;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.name {
+  height: 34rpx;
+  color: #fff;
+  font-size: 34rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.kong {
+  height: 15rpx;
+  width: 100%;
+  background: #f5f5f7;
+  border-bottom: 1rpx solid #e7e7e9;
+  border-top: 1rpx solid #e7e7e9;
+}
+
+@import "../../style/threadStyle.wxss";
+
+.cate-list{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.catel-head,.catel-voice,.catel-message,.catel-img,.pdl-ref,.pdl-reward{
+	padding-left: 24rpx;
+	padding-right: 24rpx;
+}
+
+.catel-tool{
+	border-top: 1px solid #DFDFDF;
+	padding: 0 72rpx;
+}
+
+.cate-navbar{
+	background: #f5f5f7;
+	padding-top: 20rpx;
+}
+
+.pdl-ref{
+	color: #ff4d8d;
+	font-size: 24rpx;
+	margin-top: 30rpx;
+}
+
+.pdl-reward{
+	margin-top: 50rpx;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.pdlr-img{
+	width: 50rpx;
+	height: 50rpx;
+	color: #FD6C9D;
+	box-sizing: border-box;
+	border: 1px solid #FD6C9D;
+	border-radius: 6rpx;
+	margin-right: 20rpx;
+	margin-top: 10rpx;
+	font-size: 10rpx;
+	line-height: 40rpx;
+	text-align: center;
+}
+
+.catel-ispoll-sub{
+	width: 750rpx;
+	height: 80rpx;
+	margin-bottom: 5rpx;
+	background-color: #FAFAFA;
+}
+
+.xys-navbar-item{
+	padding: 0 30rpx;
+	flex:none;
+}
+
+.postdetail-navbar-info{
+	color: #101010;
+	padding-bottom: 98rpx;
+}
+
+.pd-nocomment{
+	width: 275rpx;
+	font-size: 24rpx;
+	color: #959595;
+	margin: 220rpx auto 250rpx;
+	text-align: center;
+}
+
+.pd-nocomment image{
+	width: 275rpx;
+	height: 147rpx;
+	margin-bottom: 46rpx;
+}
+
+.pd-list{
+	padding: 30rpx 24rpx 0 0;
+	margin-left: 24rpx;
+	border-bottom: 1px solid #DFDFDF;
+}
+
+.pdl-head{
+	height: 60rpx;
+	display: flex;
+}
+
+.pdl-icon{
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 10rpx;
+	margin-right: 12rpx;
+}
+
+.pdl-person{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: auto;
+}
+
+.pdl-person-info{
+	color:#303030;
+	display: flex;
+}
+
+.pdl-person-info-name{
+	font-size: 24rpx;
+}
+
+.pdl-person-info-gender{
+	width: 54rpx;
+	height: 24rpx;
+	margin-left: 4rpx;
+	position: relative;
+}
+
+.pdl-person-info-gender image{
+	width: 54rpx;
+	height: 24rpx;
+	display: block;
+}
+
+.pdl-person-info-age{
+	color: #fff;
+	position: absolute;
+	top:0;
+	right:7rpx;
+	font-size: 20rpx;
+	line-height: 24rpx;
+}
+
+.pdl-person-badge image{
+	width: 30rpx;
+	height: 30rpx;
+	margin-left: 10rpx;
+}
+
+.pdl-post-lc{
+	margin-right: 16rpx; 
+}
+
+.pdl-post-date{
+	font-size: 20rpx;
+	color:#c4c4c4;
+}
+
+.pdl-person-up{
+	/*width: 24rpx;*/
+	height: 24rpx;
+	display: flex;
+}
+
+.pdl-person-up image{
+	width: 24rpx;
+	height: 24rpx;
+}
+
+.pdl-person-up text{
+	font-size: 20rpx;
+	line-height: 24rpx;
+	margin-left: 6rpx;
+}
+
+.pdl-message{
+	margin: 30rpx 0 0 96rpx;
+	font-size: 28rpx;
+}
+
+.pdlm-text{
+	margin-bottom: 30rpx;
+}
+
+.pdl-subfloor{
+	/*width:630rpx;*/
+	width: 100%;
+	display: block;
+	font-size: 26rpx;
+	color: #101010;
+	padding-top: 30rpx;
+	padding-bottom: 30rpx;
+	border-top: 1px solid #DFDFDF;
+	display: flex;
+	flex-direction: column; 
+}
+
+.pld-subfloor .pdls-content:first-child{
+	margin-top: 30rpx;
+}
+
+.pdl-subfloor .pdls-content+.pdls-content{
+	margin-top: 40rpx;
+}
+
+.pdls-content{
+	/*display: flex;*/
+}
+
+.pdls-content image{
+	width: 54rpx;
+	height: 26rpx;
+}
+
+.pdls-author{
+	color: #ff2874;
+	display: inline;
+}
+
+.pdls-text{
+	line-height: 26rpx;
+	display: inline-block;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.pdls-date{
+	margin-left: 24rpx;
+	font-size: 20rpx;
+	color: #c4c4c4;
+}
+
+.pdls-more{
+	font-size: 24rpx;
+	color: #ff2874;
+	margin: 50rpx 24rpx 0 auto;
+}
+
+/*.catel-img{
+	display: flex;
+	margin: 43rpx 0 0;
+}
+
+.catel-img image{
+	width: 230rpx;
+	height: 230rpx;
+	margin-top: 5px;
+	margin-right: 5px;
+}*/
+
+.catel-postinfo{
+	height: 62rpx;
+	background-color: #f5f5f7;
+	padding-left:38rpx;
+	margin-top: 28rpx;
+	font-size: 24rpx;
+	color:#303030;
+	line-height: 62rpx;
+	border-radius: 5px;
+}
+
+.catel-postinfo-name{
+	color:#ff4d8d;
+}
+
+.pd-reply{
+	height:96rpx;
+	width: 750rpx;
+	font-size: 30rpx;
+	color: #101010;
+	background: #F5F5F7;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+}
+
+.pd-reply image{
+	width: 60rpx;
+	height: 60rpx;
+	margin: 0 24rpx;
+}
+
+.pd-reply form{
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pd-reply form input{
+	width: 520rpx;
+	height: 68rpx;
+	background: #fff;
+	display: inline-block;
+	padding-left: 20rpx;
+	border-radius: 10rpx;
+}
+
+.pd-reply form button{
+	width: 102rpx;
+	height: 68rpx;
+	padding: 0;
+	border: none;
+	background: #f5f5f7;
+	font-size: 30rpx;
+	line-height: 68rpx;
+	color: #C4C4C4;
+	display: inline-block;
+}

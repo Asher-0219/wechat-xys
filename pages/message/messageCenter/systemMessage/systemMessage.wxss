@@ -1,0 +1,91 @@
+/* pages/message/messageCenter/systemMessage/systemMessage.wxss */
+
+page {
+  background: #f5f5f7;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #101010;
+  margin-bottom: 18rpx;
+  margin-left: 30rpx;  
+}
+
+.list {
+  padding-top: 20rpx;
+}
+
+.item {
+  text-align: center;
+}
+
+.date {
+  background: #dfdfdf;
+  padding: 0 24rpx;
+  height: 38rpx;
+  font-size: 18rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 38rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.content {
+  text-align: left;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 40rpx;
+  padding-top: 20rpx;
+  margin-bottom: 40rpx;
+  border: 1px solid #eee;
+}
+
+.time {
+  font-size: 18rpx;
+  color: #959595;
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+}
+
+.line {
+  height: 1px;
+  background: #dfdfdf;
+  margin-bottom: 25rpx;
+  margin-left: 30rpx;  
+}
+
+.text {
+  font-size: 24rpx;
+  color: #303030;
+  margin: 0 30rpx;  
+}
+.exp{
+  font-size: 26rpx;
+  color: #303030;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+}
+/*支付助手*/
+.pay-info{
+  text-align: center;
+  margin-bottom: 28rpx;
+}
+.pay-text{
+  font-size: 22rpx;
+  color: #959595;
+  margin-bottom: 16rpx;
+}
+.pay-num{
+  font-size: 34rpx;
+  color: #101010;
+  font-weight: bold;
+}
+.pay-item{
+  font-size: 24rpx;
+  color: #303030;
+  margin-bottom: 20rpx;
+  padding-left: 30rpx;
+}

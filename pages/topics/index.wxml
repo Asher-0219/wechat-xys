@@ -1,0 +1,12 @@
+<scroll-view class="scroll" style="height: {{height}}px;" scroll-y="true" lower-threshold="60" bindscrolltolower="refresh">
+<block wx:for="{{list}}" wx:key="{{index}}">
+  <view class="topic" bindtap="showAction" data-id="{{item.fid}}">
+    <view class="text">#{{item.name}}#</view>
+    <image class="img" src="{{item.icon}}"></image>
+    <view class="content">
+      <view class="time">{{item.starttime}}</view>
+      <view class="num">已有{{item.hardness}}人参与</view>
+    </view>
+  </view>
+</block>
+</scroll-view>

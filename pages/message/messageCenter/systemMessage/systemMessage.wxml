@@ -1,0 +1,32 @@
+
+<!--pages/message/messageCenter/systemMessage/systemMessage.wxml-->
+<view class="list">
+  <view class="item" wx:for="{{msgs}}" wx:key="{{index}}">
+    <view class="date">
+      <text>{{item.time}}</text>
+    </view>
+    <view class="content">
+      <view>
+        <view class="title">{{item.content.data.message.title}}</view>
+        <view class="time">{{item.content.data.message.postTimeStr}}</view>
+        <view class="pay-info" wx:if="{{sessionId=='p2p-4'}}">
+          <view class="pay-text">{{item.content.data.message.subtitleKey}}</view>
+          <view class="pay-num">{{item.content.data.message.subtitleValue}}</view>
+        </view>
+        <view class="line"></view>
+      </view>
+      <view wx:if="{{sessionId=='p2p-4'}}" class="pay-list">
+        <block wx:for="{{item.content.data.message.conArray}}" wx:key="{{index}}">
+          <view class="pay-item" style="margin-bottom:{{index==3?'0':''}}">
+            <text style="color:#959595;margin-right:105rpx;">{{item.keys}}</text><text>{{item.values}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="text">{{item.content.data.message.content}}</view>
+      <view class="exp" wx:if="{{sessionId=='p2p-5'}}">
+        <text style="color:#969696;margin-right:55rpx;">{{item.content.data.message.conArray[0].keys}}</text>
+        <text>{{item.content.data.message.conArray[0].values}}</text>
+      </view>
+    </view>
+  </view>
+</view>

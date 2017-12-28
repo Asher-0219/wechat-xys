@@ -1,0 +1,12 @@
+<scroll-view class="scroll" style="height: {{height}}px;" scroll-y="true" lower-threshold="60" bindscrolltolower="refresh">
+<image class="n-banner" src="../../img/notice.jpg"></image>
+<block wx:for="{{list}}" wx:for-index="idx">
+<view class="n-container" data-id="{{item.tid}}" bindtap="goPostDetail">
+    <view class='n-title'>
+        <image class="n-title-icon" wx:if="{{item.status==1}}" src="../../img/community_small_announcement@3x.png"></image>
+        <image class="n-title-icon" wx:if="{{item.status==2}}" src="../../img/community_small_activities@3x.png"></image>
+        <text class="title-text">{{item.lastpost}}</text>
+    </view>
+</view>
+</block>
+</scroll-view>

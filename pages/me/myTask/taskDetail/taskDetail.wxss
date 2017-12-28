@@ -1,0 +1,87 @@
+/* pages/me/myTask/taskDetail/taskDetail.wxss */
+.taskdetail {
+  padding: 36rpx 60rpx 0 36rpx;
+}
+.taskdetail .td-tasktitle {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #000;
+  margin-top: 64rpx;
+}
+.taskdetail .td-tasktitle:first-child {
+  margin-top: 0;
+}
+.taskdetail .td-taskcontent {
+  font-size: 24rpx;
+  color: #4A4A4A;
+  line-height: 38rpx;
+  margin-top: 25rpx;
+}
+.taskdetail .td-taskfinish {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  margin-top: 24rpx;
+  width: 654rpx;
+}
+.taskdetail .td-taskfinish:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  clear: both;
+}
+.taskdetail .td-taskfinish>view {
+  float: left;
+}
+.taskdetail .td-taskfinish .td-finish-item {
+  color: #FF578B;
+}
+.taskdetail .td-taskfinish .td-taskfinish-text {
+  display: inline-block;
+  float: left;
+}
+.taskdetail .td-taskfinish .td-taskfinish-text:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  clear: both;
+}
+.taskdetail .td-tt-center {
+  display: inline-block;
+  text-align: center;
+}
+.taskdetail .td-taskimg {
+  width: 125rpx;
+  height: 96rpx;
+  margin: 74rpx auto 22rpx;
+}
+
+.td-taskimg image{
+	width: 125rpx;
+	height: 96rpx;
+}
+
+.taskdetail .td-taskexperience {
+  font-size: 30rpx;
+  color: #FF5083;
+  text-align: center;
+}
+.taskdetail .td-finish {
+  width: 380rpx;
+  height: 80rpx;
+  border-radius: 30rpx;
+  font-size: 36rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  position: absolute;
+  bottom: 145rpx;
+  margin-left: 137rpx;
+}
+.taskdetail .td-finishun {
+  background-color: #FF4D8F;
+}
+.taskdetail .td-finished {
+  background-color: #C4C4C4;
+}

@@ -1,0 +1,104 @@
+.xys-btn {
+  box-sizing: border-box;
+  width: 90rpx;
+  height: 48rpx;
+  border: 1px solid #ff4d8d;
+  color: #ff4d8d;
+  font-size: 20rpx;
+  line-height: 48rpx;
+  text-align: center;
+  border-radius: 8rpx;
+}
+
+/**
+ * navbar
+ */
+
+.xys-navbar {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #959595;
+  border-bottom: 1px solid #dfdfdf;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #fff;
+}
+
+.xys-navbar-item {
+  flex: 1;
+}
+
+.xys-navbar-item-on {
+  color: #ff2874;
+}
+
+.xys-navbar-fixed {
+  position: fixed;
+  top: 0;
+  z-index: 9998;
+}
+
+.xys-tab {
+  display: none;
+}
+
+.xys-tab-active {
+  display: block;
+}
+
+/*遮罩*/
+
+.xys-mask {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+
+.xys-img-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.xys-img-container {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.xys-img-count {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+}
+
+.xys-shade {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.xys-shade-content {
+  border-radius: 10rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+  border: 1px solid #969696;
+}

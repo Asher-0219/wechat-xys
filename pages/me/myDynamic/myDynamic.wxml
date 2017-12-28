@@ -1,0 +1,43 @@
+<view class="list">
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="item">
+      <view class="header">
+        <view class="circle">{{item.fidname}}</view>
+        <view class="order order{{item.displayorder}}">
+          <text wx:if="{{item.displayorder==0}}">审核中</text>
+          <text wx:if="{{item.displayorder==-1}}">未通过</text>
+          <text wx:if="{{item.displayorder==-2}}">已删除</text>
+        </view>
+        <image src="/img/community_return_3@2x.png"></image>
+      </view>
+      <view class="suggest">
+        <text>{{item.message}}</text>
+      </view>
+      <view wx:if="{{item.attachmentL.length!=0}}" class="imgs">
+        <block wx:for="{{item.attachmentL}}" wx:for-item="item1">
+          <image src="{{item1.url}}"></image>
+        </block>
+      </view>
+      <view wx:if="{{item.special==1}}" class="vote">
+        <image src="/img/categories/community_vote@3x.png"></image>
+        <text>已有 {{item.specialCount}} 人参与投票</text>
+      </view>
+      <view class="footer">
+        <view class="time">
+          <text>{{item.dateline}}</text>
+        </view>
+        <view class="footer-right">
+          <view class="comments">
+            <image src="/img/categories/community_comments@3x.png"></image>
+            <text>{{item.replies}}</text>
+          </view>
+          <view class="zans">
+            <image src="/img/categories/post_details_good@3x.png"></image>
+            <text>{{item.recommends}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="kong"></view>
+  </block>
+</view>

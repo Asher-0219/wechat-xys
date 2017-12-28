@@ -1,0 +1,29 @@
+
+<!--pages/me/members/members.wxml-->
+<view class="banner">
+  <image src="{{banner}}"></image>
+</view>
+<view class="title-info" bindtap="membersLevel">
+  <image src="{{memberInfo.avatar}}" class="avatar"></image>
+  <view class="info">
+    <view class="name">{{memberInfo.nickname}}</view>
+    <view class="vip-content">
+      <image src="{{memberInfo.title}}" class="vip vip-{{memberInfo.viptype}}"></image>
+      <view class="noopen">{{memberInfo.desc}}</view>
+    </view>
+  </view>
+  <view id="1" catchtap="renewal" class="openMember">立即开通</view>
+  <!--<view wx:if="{{memberInfo.isvip==1}}" id="2" catchtap="renewal" class="openMember renewal">VIP续费</view>-->
+</view>
+<view class="kong"></view>
+<view class="content">
+  <view class="title">vip专属特权</view>
+  <view class="list" wx:for="{{list}}" wx:key="{{index}}">
+    <image src="{{item.icon}}" class="icon"></image>
+    <view class="text">
+      <view class="top-text">{{item.title}}</view>
+      <view class="down-text">{{item.desc}}</view>
+    </view>
+    <switch checked="{{item.checked}}" wx:if="{{index==2||index==3||index==4}}" id="{{index}}" class="flag" bindchange="switchChange"/>
+  </view>
+</view>

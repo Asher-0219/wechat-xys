@@ -1,0 +1,140 @@
+<scroll-view style="height:{{windowHeight}}px;padding-top:{{scrollPadding}}px" lower-threshold="400" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+	<!-- 头部 -->
+	<view class="cate-head">
+		<image class="cate-icon" src="{{threadInfo.icon}}" />
+		<view class="cateh-info">
+			<view>
+				<image class="cateh-icon2" src="../../img/categories/community_circle_list_hot@3x.png" />
+				<text class="catehi-name">{{threadInfo.name}}</text>
+			</view>
+			<view class="catehi-fp">
+				<text>关注: {{threadInfo.favtimes}}</text>
+				<text>帖子: {{threadInfo.posts}}</text>
+			</view>
+		</view>
+		<view class="xys-btn cateh-btn" bindtap="isOrFollow">
+			<text wx-if="{{threadInfo.favid==0}}">+关注</text>
+			<text wx-if="{{threadInfo.favid>0}}">已关注</text>
+		</view>
+	</view>
+	<view class="cate-intro">
+		<view>简介:</view>
+		<text>{{threadInfo.description}}</text>
+	</view>
+	<!-- tab切换 -->
+	<view class="cate-navbar {{activeScrollTop?'xys-navbar-fixed':''}}">
+		<view class="xys-navbar">
+			<block wx:for="{{tabs}}" wx:key="{{index}}">
+				<view id="{{index}}" bindtap="tabClick" class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">{{item}}</view>
+			</block>
+		</view>
+	</view>
+	<!-- 帖子列表 -->
+	<view class="cate-navbar-info">
+		<block wx:for="{{listInfo}}" wx:key="{{index}}">
+			<view class="cate-list" data-post-id="{{item.tid}}" bindtap="goPostDetail">
+				<view wx-if="{{item.threadIcon=='精'}}" class="catel-posttype">
+					<image src="../../img/categories/community_post_list_elite@3x.png" />
+				</view>
+				<view wx-if="{{item.threadIcon=='顶'}}" class="catel-posttype">
+					<image src="../../img/categories/community_post_list_top@3x.png" />
+				</view>
+				<view class="catel-head">
+					<image class="cate-icon" src="{{item.avatar}}" />
+					<view class="catel-person">
+						<view class="catel-person-info">
+							<text class="catel-person-info-name">{{item.author}}</text>
+							<view class="catel-person-info-gender">
+								<image wx-if="{{item.gender==1}}" src="../../img/categories/community_post_list_man30_30@3x.png" />
+								<image wx-if="{{item.gender==2}}" src="../../img/categories/community_post_list_woman30_30@3x.png" />
+								<text class="catel-person-info-age">{{item.age}}</text>
+							</view>
+							<view class="catel-person-badge">
+								<image wx-if="{{item.badgeList.is_goodseiyuu==1}}" src="../../img/categories/my_profile_famous.png" />
+								<image wx-if="{{item.badgeList.grade==1}}" src="../../img/categories/my_profile_level.png" />
+								<image wx-if="{{item.badgeList.viuceLv==1}}" src="../../img/categories/my_profile_stars.png" />
+								<image wx-if="{{item.badgeList.haoLv==1}}" src="../../img/categories/my_profile_diamond.png" />
+								<image wx-if="{{item.badgeList.newuser==1}}" src="../../img/categories/my_profile_new_type.png" />
+								<image wx-if="{{item.badgeList.totaltime==1}}" src="../../img/categories/my_profile_buddha.png" />
+								<image wx-if="{{item.badgeList.money==1}}" src="../../img/categories/my_profile_Local_tyrants.png" />
+								<image wx-if="{{item.badgeList.callsayutotall==1}}" src="../../img/categories/my_profile_best.png" />
+								<image wx-if="{{item.badgeList.callsayutotall2==1}}" src="../../img/categories/my_profile_thousand.png" />
+								<image wx-if="{{item.badgeList.callsayutotall3==1}}" src="../../img/categories/my_profile_ten_thousand.png" />
+							</view>
+						</view>
+						<text class="catel-post-date">{{item.dateline}}</text>
+					</view>
+				</view>
+				<!-- 声音 -->
+				<view wx-if="{{item.attachmentV!=''}}" class="catel-voice">
+					<audio src="{{item.attachmentV}}" bindended="voiceStop" data-voice-id="{{index}}" id="catel-audio{{index}}">
+						<image src="../../img/categories/community_audio@3x.png" />
+						<image class="catel-voice-img" catchtap="voicePlay" data-voice-id="{{index}}" src="{{voiceState[index]}}" />
+						<image src="../../img/categories/community_audio@3x.png" />
+					</audio>
+				</view>
+				<!-- 帖子信息 -->
+				<view class="catel-message" style="{{seeMore[index]?'min-height:138rpx':'max-height:138rpx'}}">
+					<text>{{item.message}}</text>
+				</view>
+				<view catchtap="seeMoreText" data-text-id="{{index}}" wx-if="{{item.message.length>80}}" class="catel-mmore">
+					<text wx-if="{{!seeMore[index]}}">全文</text>
+					<text wx-if="{{seeMore[index]}}">收起</text>
+				</view>
+				<!--<video class="" src="http://appfile.xys.ren/video/2017/2/1487138971154.mp4"></video>-->
+				<!-- 投票 -->
+				<view wx-if="{{item.pollNum==1}}" class="catel-ispoll">
+					<image src="../../img/categories/community_vote@3x.png" />
+					<text>  已有 {{item.pollNum}} 人参与投票</text>
+				</view>
+				<view wx-if="{{item.attachmentL.length>0}}" class="catel-img">
+					<view wx:for="{{item.attachmentL}}" wx:for-item="j" wx:for-index="jindex">
+						<image catchtap="imageView" data-img-obj="{{item.attachmentL}}" data-img-index="{{jindex}}" mode="aspectFill" wx-if="{{item.attachmentL.length==1&&jindex==0}}" style="width:475rpx;height:330rpx" src="{{j.url}}" />
+						<image catchtap="imageView" data-img-obj="{{item.attachmentL}}" data-img-index="{{jindex}}" mode="aspectFill" wx-if="{{item.attachmentL.length>1}}" style="margin-right:{{jindex%3==2?0:5}}rpx" src="{{j.url}}" />
+						<view wx-if="{{item.attachmentL.length==4&&jindex==1}}" class="catel-empty"></view>
+					</view>
+				</view>
+				<view wx-if="{{item.countComment>0}}" class="catel-postinfo">
+					<text class="catel-postinfo-name">@{{item.postInfo.nickname}}:</text>
+					<text>{{item.postInfo.message}}</text>
+				</view>
+				<!-- 评论数、分享、点赞 -->
+				<view class="catel-tool">
+					<view class="catel-tool-icon">
+						<image src="../../img/categories/community_comments@3x.png" />
+						<text>{{item.countComment}}</text>
+					</view>
+					<view class="catel-tool-icon">
+						<image src="../../img/categories/post_details_share@3x.png" />
+						<text>{{item.shareNumber}}</text>
+					</view>
+					<view class="catel-tool-icon" data-thumb-up="{{index}}" catchtap="thumbUp">
+						<image wx-if="{{item.isrecommends==0}}" src="../../img/categories/post_details_good@3x.png" />
+						<image wx-if="{{item.isrecommends==1}}" src="../../img/categories/post_details_good_click@3x.png" />
+						<text>{{item.recommends}}</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</scroll-view>
+<!-- 发帖 -->
+<view class="cate-post">
+	<image catchtap="postSendIn" src="../../img/categories/community_post_send_in@3x.png" />
+</view>
+<!-- 查看大图 -->
+<view hidden="{{!showImg}}" class="xys-mask" bindtap="imageView">
+	<view class="xys-img-wrapper">
+		<view class="xys-img-container">
+			<view wx-if="{{imgUrls.length>1}}" class="xys-img-count">{{currentImgIndex}}/{{imgUrls.length}}
+			</view>
+			<swiper current="{{currentImgChoose}}" circular="true" bindchange="imageIndexChage" style="height:100%">
+				<block wx:for="{{imgUrls}}">
+				    <swiper-item>
+				      <image style="width:{{imageWidth}}px;height:{{imageHeight}}px;margin-left:{{imageMarginLeft}}px;margin-top:{{imageMarginTop}}px" src="{{item.url}}" bindload="imageLoad" />
+				    </swiper-item>
+				  </block>
+			</swiper>
+		</view>
+	</view>
+</view>

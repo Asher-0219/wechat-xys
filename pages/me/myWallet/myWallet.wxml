@@ -1,0 +1,15 @@
+<!--pages/me/myWallet/myWallet.wxml-->
+<view class="header">
+    <view class="ub">{{ub}}</view>
+    <view class="ub-text">U币</view>
+    <view class="header-text">您收到的礼物也会直接转换成相应的U币哦</view>
+    <view class="top-up">充值</view>
+</view>
+<view class="list">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="item item{{index+1}}" data-id="{{index+1}}" bindtap="showAction">
+            <image wx:if="{{index<4}}" src="{{item.img}}"></image>
+            <view wx:if="{{index<4}}">{{item.content}}</view>
+        </view>
+    </block>
+</view>

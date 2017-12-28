@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/message/message",
+    "pages/me/index",
+    "pages/sayu/index",
+    "pages/mall/index",
+    "pages/community/index",
+    "pages/me/myFocus/myFocus",
+    "pages/sayu/means/means",
+    "pages/sayu/gift/gift",
+    "pages/sayu/photos/photos",
+    "pages/me/visitor/visitor",
+    "pages/me/myDynamic/myDynamic",
+    "pages/me/myWallet/myWallet",
+    "pages/me/myWallet/myWalletContent/myWalletContent",
+    "pages/me/achievements/achievements",
+    "pages/me/myTask/myTask",
+    "pages/me/myTask/taskDetail/taskDetail",
+    "pages/me/members/members",
+    "pages/categories/categories",
+    "pages/show/show",
+    "pages/topics/index",
+    "pages/postdetail/postdetail",
+    "pages/notice/notice",
+    "pages/postdetail/pdpersonal/pdpersonal",
+    "pages/postdetail/instruction/instruction",
+    "pages/post/post",
+    "pages/vote/vote",
+    "pages/vote/focus/focus",
+    "pages/community/list/list",
+    "pages/community/list/classify/classify",
+    "pages/community/list/invitation/invitation",
+    "pages/reward/reward",
+    "pages/me/members/membersLevel/membersLevel",
+    "pages/me/members/renewal/renewal",
+    "pages/message/messageCenter/messageCenter",
+    "pages/message/messageCenter/systemMessage/systemMessage",
+    "pages/message/xysChat/xysChat",
+    "pages/login/login",
+    "pages/login/verification/verification",
+    "pages/login/sms/sms"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF77A3",
+    "navigationBarTitleText": "xys",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#FF4D8D",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/mall/index",
+        "text": "商城",
+        "iconPath": "./img/tab_mall_not_click@3x.png",
+        "selectedIconPath": "./img/tab_mall_click@3x.png"
+      },
+      {
+        "pagePath": "pages/community/index",
+        "text": "社区",
+        "iconPath": "./img/tab_community_not_click@3x.png",
+        "selectedIconPath": "./img/tab_community_click@3x.png"
+      },
+      {
+        "pagePath": "pages/sayu/index",
+        "text": "声优",
+        "iconPath": "./img/sayu_not_click@3x.png",
+        "selectedIconPath": "./img/sayu_click@3x.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "./img/tab_did_not_click_message@3x.png",
+        "selectedIconPath": "./img/tab_did_click_message@3x.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我",
+        "iconPath": "./img/tab_i_did_not_click@3x.png",
+        "selectedIconPath": "./img/tab_i_did_click@3x.png"
+      }
+    ]
+  }
+}

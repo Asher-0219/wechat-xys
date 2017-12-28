@@ -1,0 +1,68 @@
+<view class="pd-list pdp-bac">
+	<view class="pd-head">
+		<image class="pdl-icon" src="{{item.avatar}}" />
+		<view class="pdl-person" bindtap="replyHost">
+			<view class="pdl-person-info">
+				<text class="pdl-person-info-name">{{item.author}}</text>
+				<view class="pdl-person-info-gender">
+					<image wx-if="{{item.gender==1}}" src="../../../img/categories/community_post_list_man30_30@3x.png" />
+					<image wx-if="{{item.gender==2}}" src="../../../img/categories/community_post_list_woman30_30@3x.png" />
+					<text class="pdl-person-info-age">{{item.age}}</text>
+				</view>
+				<view wx-if="{{item.ismy==1}}" class="pdl-person-info-gender">
+					<image src="../../../img/categories/community_post_list_master@3x.png" />
+				</view>
+				<view class="pdl-person-badge">
+					<image wx-if="{{item.badgeList.is_goodseiyuu==1}}" src="../../../img/categories/my_profile_famous.png" />
+					<image wx-if="{{item.badgeList.grade==1}}" src="../../../img/categories/my_profile_level.png" />
+					<image wx-if="{{item.badgeList.viuceLv==1}}" src="../../../img/categories/my_profile_stars.png" />
+					<image wx-if="{{item.badgeList.haoLv==1}}" src="../../../img/categories/my_profile_diamond.png" />
+					<image wx-if="{{item.badgeList.newuser==1}}" src="../../../img/categories/my_profile_new_type.png" />
+					<image wx-if="{{item.badgeList.totaltime==1}}" src="../../../img/categories/my_profile_buddha.png" />
+					<image wx-if="{{item.badgeList.money==1}}" src="../../../img/categories/my_profile_Local_tyrants.png" />
+					<image wx-if="{{item.badgeList.callsayutotall==1}}" src="../../../img/categories/my_profile_best.png" />
+					<image wx-if="{{item.badgeList.callsayutotall2==1}}" src="../../../img/categories/my_profile_thousand.png" />
+					<image wx-if="{{item.badgeList.callsayutotall3==1}}" src="../../../img/categories/my_profile_ten_thousand.png" />
+				</view>
+			</view>
+			<view>
+				<text class="pdl-post-lc pdl-post-date">{{stage}}楼</text>
+				<text class="pdl-post-date">{{item.dateline}}</text>
+			</view>
+		</view>
+		<view class="pdl-person-up" catchtap="thumbUp">
+			<image wx-if="{{item.isPfav==0}}" src="../../../img/categories/post_details_good@3x.png" />
+			<image wx-if="{{item.isPfav>0}}" src="../../../img/categories/post_details_good_click@3x.png" />
+			<text>{{item.pfavCount}}</text>
+		</view>
+	</view>
+	<view class="pdl-message">
+		<view class="pdlm-text">{{item.message}}</view>
+		<view wx-if="{{commentList.length>0}}" class="pdl-subfloor">
+			<block wx:for="{{commentList}}" wx:for-item="floor" wx:for-index="findex">
+				<view class="pdls-content" data-name="{{floor.author}}" data-spid="{{floor.spid}}" bindtap="replyOther">
+					<block wx-if="{{floor.sparentid==0}}">
+						<text class="pdls-author">{{floor.author}}</text>
+					</block>
+					<block wx-if="{{floor.sparentid>0}}">
+						<text class="pdls-author">{{floor.author}}</text>回复
+						<text class="pdls-author">{{floor.replyAuthor}}</text>
+					</block>
+					<image wx-if="{{item.ismy==1}}" src="../../img/categories/community_post_list_master@3x.png" />
+					<block class="pdls-text">
+						：{{floor.message}}
+						<text class="pdls-date">{{floor.dateline}}</text>
+					</block>
+				</view>
+			</block>
+		</view>
+	</view>
+</view>
+
+<view class="pd-reply">
+	<image src="../../../img/categories/community_smiling_face@3x.png" />
+	<form bindreset="sendMessage">
+		<input type="text" bindinput="getInputValue" placeholder="回复{{replyName}}:"  placeholder-style="color:#C9C9C9" focus="true" />
+		<button formType="reset" hover-class="none">发送</button>
+	</form>
+</view>

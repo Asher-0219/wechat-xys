@@ -1,0 +1,49 @@
+<view class="header">
+  <view class="xys-navbar">
+    <block wx:for="{{tabs}}" wx:key="{{index}}">
+      <view id="{{index}}" bindtap="tabClick" class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="title-list">
+    <block wx:for="{{titleList}}" wx:key="{{index}}">
+      <view class="title-item t-{{index}}">
+        <image class="title-icon" src="{{item.avatar}}"></image>
+        <image wx:if="{{index==0}}" class="post-img" src="/img/community_champion_1@2x.png"></image>
+        <image wx:if="{{index==1}}" class="post-img" src="/img/community_runer_1@2x.png"></image>
+        <image wx:if="{{index==2}}" class="post-img" src="/img/community_third_1@2x.png"></image>
+        <text>发帖 {{item.num}}条</text>
+      </view>
+    </block>
+  </view>
+</view>
+  <view class="content">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+      <view class="list">
+        <text class="num">{{index+4}}</text>
+        <image class="list-icon" src="{{item.avatar}}"></image>
+        <view class="name">
+          <text class="nickname">{{item.nickname}}</text>
+          <view class="age-box">
+            <image class="age-img" wx:if="{{item.gender==1}}" src="/img/community_post_list_man30_30@3x.png"></image>
+            <image class="age-img" wx:if="{{item.gender==2}}" src="/img/community_post_list_woman30_30@3x.png"></image>
+            <text>{{item.age}}</text>
+          </view>
+          <view class="icons">
+            <image wx-if="{{item.icon.is_goodseiyuu==1}}" src="/img/categories/my_profile_famous.png" />
+            <image wx-if="{{item.icon.grade==1}}" src="/img/categories/my_profile_level.png" />
+            <image wx-if="{{item.icon.viuceLv==1}}" src="/img/categories/my_profile_stars.png" />
+            <image wx-if="{{item.icon.haoLv==1}}" src="/img/categories/my_profile_diamond.png" />
+            <image wx-if="{{item.icon.newuser==1}}" src="/img/categories/my_profile_new_type.png" />
+            <image wx-if="{{item.icon.totaltime==1}}" src="/img/categories/my_profile_buddha.png" />
+            <image wx-if="{{item.icon.money==1}}" src="/img/categories/my_profile_Local_tyrants.png" />
+            <image wx-if="{{item.icon.callsayutotall==1}}" src="/img/categories/my_profile_best.png" />
+            <image wx-if="{{item.icon.callsayutotall2==1}}" src="/img/categories/my_profile_thousand.png" />
+            <image wx-if="{{item.icon.callsayutotall3==1}}" src="/img/categories/my_profile_ten_thousand.png" />
+          </view>
+          <text class="post-num">发表帖子 {{item.num}}条</text>
+        </view>
+      </view>
+    </block>
+  </view>

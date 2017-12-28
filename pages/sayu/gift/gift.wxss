@@ -1,0 +1,33 @@
+.gift-item{
+    height: 125rpx;
+    display: flex;
+    align-items: center; 
+    padding-left: 44rpx;
+    padding-right: 24rpx;
+    width: 100%;
+    border-bottom: 1px solid #fafafa;
+}
+.gift-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
+.name{
+    margin-left: 45rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 305rpx;
+}
+.name-text{
+    font-size: 30rpx;
+    color: #101010;
+    margin-bottom: 30rpx;
+}
+.num{
+    font-size: 24rpx;
+    color: #c4c4c4;
+}
+.charm{
+    font-size: 22rpx;
+    color: #ff4d8d;
+}

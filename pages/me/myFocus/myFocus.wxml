@@ -1,0 +1,37 @@
+<scroll-view style="height:{{windowHeight}}px;" lower-threshold="40" scroll-y="true" bindscrolltolower="lower">
+<view class="list">
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="item">
+    <view class="line"></view>
+      <image class="avatar" data-id="{{item.uidRel}}" bindtap="showAction" src="{{item.avatar}}"></image>
+      <view class="name-box">
+        <view class="name-top">
+          <text class="name">{{item.userName}}</text>
+          <view class="age">
+            <image class="age-img" wx:if="{{item.gender==1}}" src="/img/community_post_list_man30_30@3x.png"></image>
+            <image class="age-img" wx:if="{{item.gender==2}}" src="/img/community_post_list_woman30_30@3x.png"></image>
+            <text>{{item.age}}</text>
+          </view>
+        </view>
+        <view class="name-down">
+          <text>{{item.suggest}}</text>
+        </view>
+      </view>
+      <view class="focus-img">
+        <view data-uid="{{item.uidRel}}" bindtap="removeLike" class="focus-icon" wx:if="{{item.isfriend==1}}">
+          <image src="/img/original_poster_focus_on_each_other@2x.png"></image>
+          <text>互相关注</text>
+        </view>
+        <view class="focus-icon" wx:if="{{type==1&&item.isfriend==0}}">
+          <image src="/img/original_poster_has_been_focused_on@2x.png"></image>
+          <text>已关注</text>
+        </view>
+        <view bindtap="addLike" data-uid="{{item.uidRel}}" class="focus-icon" wx:if="{{item.isFans==0&&type==2}}">
+          <image src="/img/original_poster_follow@2x.png"></image>
+          <text class="add-like">关注</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</scroll-view>

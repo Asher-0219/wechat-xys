@@ -1,0 +1,196 @@
+<!-- 帖子详情头部 -->
+<scroll-view style="height:{{windowHeight-98}}px;" lower-threshold="400" scroll-y="true"  bindscrolltolower="lower">
+	<view class="cate-list">
+		<view class="catel-head">
+			<image class="cate-icon" src="{{dataHead.threadInfo.avatar}}" />
+			<view class="catel-person">
+				<view class="catel-person-info">
+					<text class="catel-person-info-name">{{dataHead.threadInfo.author}}</text>
+					<view class="catel-person-info-gender">
+						<image wx-if="{{dataHead.threadInfo.gender==1}}" src="../../img/categories/community_post_list_man30_30@3x.png" />
+						<image wx-if="{{dataHead.threadInfo.gender==2}}" src="../../img/categories/community_post_list_woman30_30@3x.png" />
+						<text class="catel-person-info-age">{{dataHead.threadInfo.age}}</text>
+					</view>
+					<!-- 成就 -->
+					<view class="catel-person-badge">
+						<image wx-if="{{dataHead.badgeList.is_goodseiyuu==1}}" src="../../img/categories/my_profile_famous.png" />
+						<image wx-if="{{dataHead.badgeList.grade==1}}" src="../../img/categories/my_profile_level.png" />
+						<image wx-if="{{dataHead.badgeList.viuceLv==1}}" src="../../img/categories/my_profile_stars.png" />
+						<image wx-if="{{dataHead.badgeList.haoLv==1}}" src="../../img/categories/my_profile_diamond.png" />
+						<image wx-if="{{dataHead.badgeList.newuser==1}}" src="../../img/categories/my_profile_new_type.png" />
+						<image wx-if="{{dataHead.badgeList.totaltime==1}}" src="../../img/categories/my_profile_buddha.png" />
+						<image wx-if="{{dataHead.badgeList.money==1}}" src="../../img/categories/my_profile_Local_tyrants.png" />
+						<image wx-if="{{dataHead.badgeList.callsayutotall==1}}" src="../../img/categories/my_profile_best.png" />
+						<image wx-if="{{dataHead.badgeList.callsayutotall2==1}}" src="../../img/categories/my_profile_thousand.png" />
+						<image wx-if="{{dataHead.badgeList.callsayutotall3==1}}" src="../../img/categories/my_profile_ten_thousand.png" />
+					</view>
+				</view>
+				<text class="catel-post-date">{{dataHead.threadInfo.dateline}}</text>
+			</view>
+		</view>
+		<!-- 声音 -->
+		<view wx-if="{{dataHead.threadInfo.threadVoice!=''}}" class="catel-voice">
+			<audio src="{{dataHead.threadInfo.threadVoice}}" id="catel-audio">
+				<image src="../../img/categories/community_audio@3x.png" />
+				<image class="catel-voice-img" catchtap="voicePlay" src="{{voiceState}}" />
+				<image src="../../img/categories/community_audio@3x.png" />
+			</audio>
+		</view>
+		<!-- 发帖信息 -->
+		<view class="catel-message">
+			<text>{{dataHead.threadInfo.message}}</text>
+		</view>
+		<!-- 投票 -->
+		<view wx-if="{{dataHead.pollData.pollList.length>0}}" class="catel-ispoll">
+			<view wx-if="{{dataHead.pollData.isPoll==0}}">
+				<view wx:for="{{dataHead.pollData.pollList}}" class="catel-ispoll-sub">
+					{{item.polloption}}
+					<image wx-if="{{item.choose==0}}" data-id="{{index}}" bindtap="voteChoose" class="catel-ispoll-img" src="../../img/categories/community_vote_not_to_choose@3x.png" />
+					<image wx-if="{{item.choose==1}}" data-id="{{index}}" bindtap="voteChoose" class="catel-ispoll-img" src="../../img/categories/community_vote_choose@3x.png" />
+				</view>
+				<view bindtap="votePost" class="catel-ispoll-submit">参与投票</view>
+			</view>
+			<view wx-if="{{dataHead.pollData.isPoll>0}}">
+				<view wx:for="{{dataHead.pollData.pollList}}" class="catel-polled-sub">
+					<view class="catel-polled-text">{{item.polloption}}</view>
+					<view class="catel-polled-wrapper">
+						<view class="catel-polled-progress" style="width:{{item.votes/dataHead.pollData.totalPoll*100}}%"></view>
+					</view>
+					<view class="catel-polled-count">{{item.votes}}票</view>
+				</view>
+			</view>
+		</view>
+		<!-- 图片 -->
+		<view wx-if="{{dataHead.threadInfo.threadImg.length>0}}" class="catel-img">
+			<view wx:for="{{dataHead.threadInfo.threadImg}}" wx:for-item="j" wx:for-index="jindex">
+				<image catchtap="imageView" data-img-obj="{{dataHead.threadInfo.threadImg}}" data-img-index="{{jindex}}" wx-if="{{dataHead.threadInfo.threadImg.length==1&&jindex==0}}" mode="aspectFill" style="width:475rpx;height:330rpx" src="{{j.url}}" />
+				<image catchtap="imageView" data-img-obj="{{dataHead.threadInfo.threadImg}}" data-img-index="{{jindex}}" wx-if="{{dataHead.threadInfo.threadImg.length>1}}" mode="aspectFill" style="margin-right:{{jindex%3==2?0:5}}rpx" src="{{j.url}}" />
+				<view wx-if="{{dataHead.threadInfo.threadImg.length==4&&jindex==1}}" class="catel-empty"></view>
+			</view>
+		</view>
+		<!-- @的人 -->
+		<view wx-if="{{dataHead.threadats!=''}}" class="pdl-ref">{{dataHead.threadats}}</view>
+		<!-- 打赏显示 -->
+		<view wx-if="{{dataHead.threadPeople.length>0}}" class="pdl-reward" bindtap="showReward">
+			<image class="pdlr-img" wx:for="{{dataHead.threadPeople}}" wx:for-item="reward" src="{{reward.avatar}}" />
+			<view class="pdlr-img">...</view>
+		</view>
+	</view>
+	<!-- 打赏、分享、点赞 -->
+	<view class="catel-tool">
+		<view class="catel-tool-icon">
+			<image src="../../img/categories/community_exceptional@3x.png" />
+			<text>打赏</text>
+			<!-- <text>{{item.countComment}}</text> -->
+		</view>
+		<view class="catel-tool-icon">
+			<image src="../../img/categories/post_details_share@3x.png" />
+			<text>{{dataHead.shareNumber}}</text>
+		</view>
+		<view class="catel-tool-icon" data-thumb-up="dataHead" catchtap="thumbUp">
+			<image wx-if="{{dataHead.threadInfo.isRecommend==0}}" src="../../img/categories/post_details_good@3x.png" />
+			<image wx-if="{{dataHead.threadInfo.isRecommend==1}}" src="../../img/categories/post_details_good_click@3x.png" />
+			<text>{{dataHead.threadInfo.favCount}}</text>
+		</view>
+	</view>
+	<!-- tab栏 -->
+	<view class="cate-navbar {{activeScrollTop?'xys-navbar-fixed':''}}">
+		<view class="xys-navbar">
+			<block wx:for="{{tabs}}" wx:key="{{index}}">
+				<view id="{{index}}" bindtap="tabClick">
+					<view class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">{{item}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<!-- 回帖信息 -->
+	<view class="postdetail-navbar-info">
+		<!-- 没有回复 -->
+		<block wx-if="{{isEmpty}}">
+			<view class="pd-nocomment">
+				<image src="../../img/categories/post_details_no_comment@3x.png" />
+				<text wx-if="{{dataHead.threadInfo.closed==0}}">快来发表你的评论吧</text>
+				<text wx-if="{{dataHead.threadInfo.closed>0}}">本帖由楼主设置了不允许评论</text>
+			</view>
+		</block>
+		<!-- 回复列表 -->
+		<block wx-if="{{!isEmpty}}" wx:for="{{dataList}}" wx:key="{{index}}">
+			<view class="pd-list" bindtap="seeComment" data-floor-index="{{index}}">
+				<view class="pdl-head">
+					<image class="pdl-icon" src="{{item.avatar}}" />
+					<view class="pdl-person">
+						<view class="pdl-person-info">
+							<text class="pdl-person-info-name">{{item.author}}</text>
+							<view class="pdl-person-info-gender">
+								<image wx-if="{{item.gender==1}}" src="../../img/categories/community_post_list_man30_30@3x.png" />
+								<image wx-if="{{item.gender==2}}" src="../../img/categories/community_post_list_woman30_30@3x.png" />
+								<text class="pdl-person-info-age">{{item.age}}</text>
+							</view>
+							<view wx-if="{{item.ismy==1}}" class="pdl-person-info-gender">
+								<image src="../../img/categories/community_post_list_master@3x.png" />
+							</view>
+						</view>
+						<view>
+							<text class="pdl-post-lc pdl-post-date">{{item.lcnumber}}楼</text>
+							<text class="pdl-post-date">{{item.dateline}}</text>
+						</view>
+					</view>
+					<view class="pdl-person-up" data-thumb-up="{{index}}" catchtap="thumbUp">
+						<image wx-if="{{item.isPfav==0}}" src="../../img/categories/post_details_good@3x.png" />
+						<image wx-if="{{item.isPfav>0}}" src="../../img/categories/post_details_good_click@3x.png" />
+						<text>{{item.pfavCount}}</text>
+					</view>
+				</view>
+				<!-- 楼层回复内容 -->
+				<view class="pdl-message">
+					<view class="pdlm-text">{{item.message}}</view>
+					<view wx-if="{{item.fthreadInfotwo.length>0}}" class="pdl-subfloor">
+						<block wx:for="{{item.fthreadInfotwo}}" wx:for-item="floor" wx:for-index="findex">
+							<view class="pdls-content">
+								<block wx-if="{{floor.sparentid==0}}">
+									<text class="pdls-author">{{floor.author}}</text>
+								</block>
+								<block wx-if="{{floor.sparentid>0}}">
+									<text class="pdls-author">{{floor.author}}</text>回复
+									<text class="pdls-author">{{floor.replyAuthor}}</text>
+								</block>
+								<image wx-if="{{item.ismy==1}}" src="../../img/categories/community_post_list_master@3x.png" />
+								<block class="pdls-text">
+									:{{floor.message}}
+									<text class="pdls-date">{{floor.dateline}}\n</text>
+								</block>
+							</view>
+						</block>
+						<view wx-if="{{item.moreCount>item.fthreadInfotwo.length}}" class="pdls-more">更多{{item.moreCount-2}}条回复...</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</scroll-view>
+<!-- 回复 -->
+<view class="pd-reply">
+	<image src="../../img/categories/community_smiling_face@3x.png" />
+	<form bindreset="sendMessage">
+		<input wx-if="{{dataHead.threadInfo.closed==0}}" type="text" bindinput="getInputValue" placeholder="回复楼主:"  placeholder-style="color:#C9C9C9" focus="true" />
+		<input wx-if="{{dataHead.threadInfo.closed>0}}" type="text" bindinput="getInputValue" placeholder="本帖不允许评论"  placeholder-style="color:#C9C9C9" focus="true" />
+		<button formType="reset" hover-class="none" disabled="{{!dataHead.threadInfo.closed}}">发送</button>
+	</form>
+</view>
+<!-- 查看大图 -->
+<view hidden="{{!showImg}}" class="xys-mask" bindtap="imageView">
+	<view class="xys-img-wrapper">
+		<view class="xys-img-container">
+			<view wx-if="{{imgUrls.length>1}}" class="xys-img-count">{{currentImgIndex}}/{{imgUrls.length}}
+			</view>
+			<swiper current="{{currentImgChoose}}" circular="true" bindchange="imageIndexChage" style="height:100%">
+				<block wx:for="{{imgUrls}}">
+				    <swiper-item>
+				      <image style="width:{{imageWidth}}px;height:{{imageHeight}}px;margin-left:{{imageMarginLeft}}px;margin-top:{{imageMarginTop}}px" src="{{item.url}}" bindload="imageLoad" />
+				    </swiper-item>
+				  </block>
+			</swiper>
+		</view>
+	</view>
+</view>
+

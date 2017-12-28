@@ -1,0 +1,44 @@
+<view class="xys-navbar">
+  <block wx:for="{{tabs}}" wx:key="{{index}}">
+    <view id="{{index}}" bindtap="tabClick" class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">
+      <text>{{item}}</text>
+    </view>
+  </block>
+</view>
+<view>
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class="list-content l-{{index}}" style="display:{{index>2?'flex':'inline-block'}};border-bottom:{{index>2?'1px solid #d1d1d1':'none'}};height:{{index>2?160:'auto'}}rpx;align-items:{{index>2?'center':'none'}}">
+      <text wx:if="{{index>2}}" class="n">NO.{{index+1}}</text>
+      <image wx:if="{{index==0}}" class="avatar" src="{{item.avatar}}"></image>
+      <image wx:if="{{index==1||index==2}}" class="avatar" src="{{item.avatar}}" style="width:342rpx;height:342rpx;"></image>
+      <image wx:if="{{index>2}}" class="avatar" src="{{item.avatar}}" style="width:100rpx;height:100rpx;border-radius:10rpx;margin-right:24rpx;"></image>
+      <image wx:if="{{index==0&&num==1}}" class="title-img t-{{index}}" src="/img/making_ranking_champion@2x.png"></image>
+      <image wx:if="{{index==0&&num==2}}" class="title-img t-{{index}}" src="/img/making_ranking_champion_1@2x.png"></image>
+      <image wx:if="{{index==1&&num==1}}" style="width:78rpx;height:101rpx;" class="title-img t-{{index}}" src="/img/making_ranking_third@2x.png"></image>
+      <image wx:if="{{index==1&&num==2}}" style="width:78rpx;height:101rpx;" class="title-img t-{{index}}" src="/img/making_ranking_third_1@2x.png"></image>
+      <image wx:if="{{index==2&&num==1}}" style="width:78rpx;height:101rpx;" class="title-img t-{{index}}" src="/img/making_ranking_runner@2x.png"></image>
+      <image wx:if="{{index==2&&num==2}}" style="width:78rpx;height:101rpx;" class="title-img t-{{index}}" src="/img/making_ranking_runner_1@2x.png"></image>
+      <text wx:if="{{index>=0&&index<3}}" class="online">{{item.isOnline}}</text>
+      <view class="name" style="position: {{index>2?'static':'absolute'}}">
+        <view class="age">
+          <text wx:if="{{index>=0&&index<3}}" class="nickname">{{item.nickname}}</text>
+          <text wx:if="{{index>2}}" class="nickname" style="color:#101010;">{{item.nickname}}</text>
+          <view class="age-box">
+            <image class="age-img" wx:if="{{item.gender==1}}" src="/img/community_post_list_man30_30@3x.png"></image>
+            <image class="age-img" wx:if="{{item.gender==2}}" src="/img/community_post_list_woman30_30@3x.png"></image>
+            <text>{{item.age}}</text>
+          </view>
+        </view>
+        <text wx:if="{{num==1}}" class="value" style="color:{{index>2?'#959595':'#fff'}};">
+          <text  class="value-num">{{item.value}}</text>魅力值</text>
+          <text wx:if="{{num==2}}" class="value" style="color:{{index>2?'#959595':'#fff'}};">
+          <text  class="value-num">{{item.value}}</text>土豪值</text>
+      </view>
+      <view wx:if="{{index>2&&num==1}}" class="cost">
+        <text class="voi">{{item.voiceTariff}}币/分</text>
+        <text class="onl">{{item.isOnline}}</text>
+      </view>
+      <text wx:if="{{index>=0&&index<3&&num==1}}" class="voice">{{item.voiceTariff}}币/分</text>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<!--banner-->
+<swiper indicator-dots="true" class="banner" autoplay="true" interval="4000" duration="1000">
+  <swiper-item wx:for="{{bannerList}}" bindtap="goPostDetail" wx:key="{{index}}" data-post-id="{{item.typeId}}">
+    <view class="swiper-img" style="background-image:url({{item.imgUrl}});background-size:cover"></view>
+  </swiper-item>
+</swiper>
+<!--主要商品分类-->
+<view class="cat-list">
+  <block wx:for="{{catList}}" wx:key="{{index}}">
+    <view class="cat-item" style="margin-right:{{index==3||index==7?0:65}}rpx">
+      <image src="{{item.catImg}}"></image>
+      <text>{{item.catName}}</text>
+    </view>
+  </block>
+</view>
+
+<view class="kong"></view>
+<!--推荐广告-->
+<view wx:if="{{bar.pic}}" class="ad">
+  <image src="{{bar.pic}}"></image>
+</view>
+<view wx:if="{{bar.pic}}" class="kong"></view>
+<!--限时抢购-->
+<view class="fale">
+  <view class="fale-left">
+    <image src="{{fale.pic}}"></image>
+  </view>
+  <view class="fale-right">
+    <image src="{{newProduct.pic}}" style="height:240rpx;"></image>
+    <image src="{{youMayLike.pic}}" style="height:90rpx;"></image>
+  </view>
+</view>
+<view class="kong"></view>
+<!--超实惠-->
+<view class="afford">
+  <view class="title">
+      <text>超实惠</text>
+  </view>
+  <view class="afford-content">
+    <view class="afford-content-left">
+      <image src="{{first[0].pic}}"></image>
+    </view>
+    <view class="afford-content-right">
+      <block wx:for="{{bennefit}}" wx:key="{{index}}">
+        <image src="{{item.pic}}"></image>
+      </block>
+    </view>
+  </view>
+</view>
+<view class="kong"></view>
+<!--情趣波波秀-->
+<view class="bbshow">
+    <view class="title">
+      <text>情趣波波秀</text>
+      <view class="title-right">更多>></view>
+  </view>
+</view>

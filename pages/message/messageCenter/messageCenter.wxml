@@ -1,0 +1,18 @@
+
+<!--pages/message/messageCenter/messageCenter.wxml-->
+<view class="list">
+    <view class="item" wx:for="{{sessions.teamSessions}}" data-name="{{list[item.id].name}}" data-session-id="{{item.id}}" data-id="{{list[item.id].id}}" bindtap="showAction" wx:key="{{index}}">
+        <view class="avatar">
+            <image src="{{list[item.id].img}}"></image>
+        </view>
+        <view class="info">
+            <view class="title">{{list[item.id].name}}</view>
+            <view class="text" wx:if="{{item.id!='p2p-4'}}">{{item.lastMsg.content.data.message.content}}</view>
+            <view class="text" wx:if="{{item.id=='p2p-4'}}">{{item.lastMsg.content.data.message.conArray[0].values}}</view>
+        </view>
+        <view class="time">
+            <text>{{item.updateTime}}</text>
+            <view class="num" wx:if="{{item.unread>0}}">{{item.unread}}</view>
+       </view>
+    </view>
+</view>

@@ -1,0 +1,95 @@
+/* pages/me/members/members.wxss */
+.banner{
+    width: 100%;
+    height: 200rpx;
+}
+.banner image{
+    width: 100%;
+    height: 100%;
+}
+.title-info{
+    display: flex;
+    align-items: center;
+    height: 140rpx;
+    padding: 0 24rpx;
+}
+.avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+    margin-right: 24rpx;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+}
+.name{
+    font-size: 28rpx;
+    color: #303030;
+    margin-bottom: 22rpx;
+}
+.openMember{
+    margin-left: auto;
+    width: 124rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+    background: #ff5480;
+    text-align: center;
+    font-size: 24rpx;
+    color: #fff;
+    line-height: 50rpx;
+}
+.renewal{
+    background: #fff;
+    border: 1px solid #ff5481;
+    color: #ff5481;
+}
+.vip-content{
+    display: flex;
+    align-items: center;
+}
+.noopen{
+    font-size: 22rpx;
+    color: #959595;
+}
+.vip{
+    width: 90rpx;
+    height: 30rpx;
+    margin-right: 10rpx;
+}
+.kong{
+    width: 100%;
+    height: 18rpx;
+    background: #fafafa;
+}
+.title{
+    padding-top: 20rpx;
+    padding-left: 24rpx;
+    color: #101010;
+    font-size: 30rpx;
+}
+.top-text{
+    color: #101010;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+.down-text{
+    color: #959595;
+    font-size: 22rpx;
+}
+.icon{
+    width: 72rpx;
+    height: 72rpx;
+    margin-right: 24rpx;
+    margin-left: 24rpx;
+}
+.list{
+    display: flex;
+    align-items: center;
+    height: 140rpx;
+    border-bottom: 1px solid #dfdfdf;
+}
+.flag{
+    margin-left: auto;
+    margin-right: 24rpx;
+}

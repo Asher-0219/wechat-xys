@@ -1,0 +1,130 @@
+/* pages/me/members/membersLevel/membersLevel.wxss */
+
+.titleicon {
+  width: 160rpx;
+  height: 52rpx;
+  margin-bottom: 34rpx;
+}
+
+.title {
+  padding: 70rpx 24rpx 0 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  color: #303030;
+  margin-bottom: 36rpx;
+}
+
+.group {
+  display: flex;
+  align-items: stretch;
+}
+
+.group image {
+  width: 72rpx;
+  height: 24rpx;
+}
+
+progress {
+  width: 540rpx;
+  border-radius: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.progress {
+  margin: 0 10rpx;
+  color: #fdc951;
+  font-size: 24rpx;
+}
+
+.group view {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.group-left, .group-right {
+  color: #303030;
+  font-size: 20rpx;
+}
+
+.group-left image, .group-right image {
+  margin-bottom: 16rpx;
+}
+
+.num {
+  color: #ff77a4;
+}
+
+.content-title {
+  color: #101010;
+  font-size: 28rpx;
+  font-weight: bold;
+  padding-left: 24rpx;
+  margin-bottom: 48rpx;
+}
+
+.table {
+  padding: 0 21rpx;
+  width: 100%;
+  box-sizing: border-box;
+  color: #303030;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 74rpx;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.table-content {
+  width: 174rpx;
+  height: 148rpx;
+  border-top: 1px solid #c4c4c4;
+  border-left: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.table-4 {
+  border-right: 1px solid #c4c4c4;
+}
+
+.level {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.table3 {
+  padding: 0 21rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.table3 view {
+  border: 1px solid #c4c4c4;
+  border-bottom: none;
+  height: 74rpx;
+  font-size: 24rpx;
+  color: #303030;
+  padding-left: 36rpx;
+  line-height: 74rpx;
+}
+
+.table3 .down {
+  border-bottom: 1px solid #c4c4c4;
+}
+.renewal{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fe659d;
+    color: #fff;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 88rpx;
+    height: 88rpx;
+    font-weight: bold;
+}

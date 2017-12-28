@@ -1,0 +1,42 @@
+/* pages/me/myWallet/myWalletContent/myWalletContent.wxss */
+
+.title-content {
+  display: flex;
+  font-size: 30rpx;
+  color: #303030;
+  text-align: center;
+  height: 125rpx;
+  justify-content: space-between;
+  line-height: 125rpx;
+  border-top: 1px solid #dfdfdf;
+}
+
+.title-item {
+  flex: auto;
+}
+
+.content {
+  color: #959595;    
+  font-size: 26rpx;
+  text-align: center;
+  height: 125rpx;
+  line-height: 125rpx;
+}
+.item{
+  display: flex; 
+  justify-content: space-between;   
+  border-top: 1px solid #dfdfdf;     
+}
+.item view{
+    flex: 1;
+}
+.number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.number image{
+    width: 18rpx;
+    height: 32rpx;
+    margin-left: auto;
+}

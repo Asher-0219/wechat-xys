@@ -1,0 +1,51 @@
+
+<!--pages/me/myWallet/myWalletContent/myWalletContent.wxml-->
+<view class="title">
+  <view wx:if="{{id==1}}" class="title-content">
+    <view class="title-item">
+      <text>充值日期</text>
+    </view>
+    <view class="title-item">
+      <text>充值金额</text>
+    </view>
+    <view class="title-item">
+      <text>增加U币</text>
+    </view>
+  </view>
+  <view wx:if="{{id==2}}" class="title-content">
+    <view class="title-item">
+      <text>消费日期</text>
+    </view>
+    <view class="title-item">
+      <text>消费U币</text>
+    </view>
+  </view>
+  <view wx:if="{{id==3}}" class="title-content">
+    <view class="title-item">
+      <text>收入日期</text>
+    </view>
+    <view class="title-item">
+      <text>收入U币</text>
+    </view>
+  </view>
+</view>
+<view class="content">
+  <block wx:for="{{list}}" wx:key="index">
+    <view wx:if="{{id==1}}" class="item">
+      <view class="tiem">{{item.dateline}}</view>
+      <view class="moneys">{{item.moneys}}</view>
+      <view class="number">{{item.money}}</view>
+    </view>
+    <view wx:if="{{id==2}}" class="item">
+      <view class="tiem">{{item.dateline}}</view>
+      <view class="number">
+        {{item.money}}
+        <!--<image src="/img/community_post_arrows_1@3x.png"></image>-->
+      </view>
+    </view>
+    <view wx:if="{{id==3}}" class="item">
+      <view class="tiem">{{item.dateline}}</view>
+      <view class="number">{{item.number}}</view>
+    </view>
+  </block>
+</view>

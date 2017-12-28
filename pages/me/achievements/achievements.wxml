@@ -1,0 +1,39 @@
+<view class="header">
+    <view class="header-left">
+        <image src="/img/achieven/personal_my_accomplishments_dimons.png"></image>
+        <text>土豪值{{infoList.tuhao}}</text>
+    </view>
+    <view class="avatar">
+        <image src="{{infoList.avatar}}"></image>
+    </view>
+    <view class="header-right">
+        <image src="/img/achieven/personal_my_accomplishments_charm.png"></image>
+        <text>魅力值{{infoList.charm}}</text>             
+    </view>
+</view>
+<view class="kong">
+    <text>声优成就</text>
+</view>
+<view class="content">
+    <block wx:for="{{sayuList}}" wx:key="{{index}}">
+        <view class="item" style="border:{{index==4?'none':''}}">
+            <image class="icon" src="{{item.pic}}"></image>
+            <text>{{item.content}}</text>
+            <image class="hide" wx:if="{{item.hide==0}}" src="/img/achieven/personal_my_accomplishments_offlock.png"></image>
+            <image class="hide" wx:if="{{item.hide==1}}" src="/img/achieven/personal_my_accomplishments_unlock.png"></image>
+        </view>
+    </block>    
+</view>
+<view class="kong">
+    <text>大众成就</text>
+</view>
+<view class="content">
+    <block wx:for="{{maleList}}" wx:key="{{index}}">
+        <view class="item" style="border:{{index==4?'none':''}}">
+            <image class="icon" src="{{item.pic}}"></image>
+            <text>{{item.content}}</text>
+            <image class="hide" wx:if="{{item.hide==0}}" src="/img/achieven/personal_my_accomplishments_offlock.png"></image>
+            <image class="hide" wx:if="{{item.hide==1}}" src="/img/achieven/personal_my_accomplishments_unlock.png"></image>
+        </view>
+    </block>    
+</view>

@@ -1,0 +1,26 @@
+<view class="header">
+  <text>(/10)确定</text>
+</view>
+<view class="kong"></view>
+<view class="at-list">
+  <text class="at-title">我的关注 ()</text>
+  <block  wx:for="{{atList}}" wx:key="{{index}}">
+    <view class="at-item">
+      <image class="at-icon" src="{{item.avatar}}"></image>
+      <view class="at-info">
+        <view class="at-name">{{item.username}}</view>
+        <view class="at-sex">
+          <image wx:if="{{item.gender==1}}" class="at-sex-icon" src="../../../img/community_reply_list_man24_24@3x.png"></image>
+          <image wx:if="{{item.gender==2}}" class="at-sex-icon" src="../../../img/community_reply_list_woman24_24@3x.png"></image>
+          <text class="at-age"></text>
+        </view>
+        <text></text>
+      </view>
+    </view>
+  </block>
+</view>
+<checkbox-group bindchange="checkboxChange">
+  <label class="checkbox" >
+    <checkbox value="1" checked="{{checked}}"/>{{item.value}}
+  </label>
+</checkbox-group>

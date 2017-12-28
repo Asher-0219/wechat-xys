@@ -1,0 +1,576 @@
+page {
+  overflow-x: hidden;
+}
+
+.com-tab{
+  display: flex;
+  align-items: center;
+}
+
+.com-message{
+  margin-left: 24rpx;
+  margin-right: 92rpx;
+}
+
+.com-message image{
+  width: 46rpx;
+  height: 41rpx;
+}
+
+.xys-navbar-item{
+  flex: none;
+  padding: 0 35rpx;
+}
+
+.banner {
+  width: 100%;
+}
+
+.swiper-img {
+  width: 100%;
+  height: 100%;
+}
+
+.wx-swiper-dot::before {
+  color: #fff;
+}
+.down swiper{
+  height: 100%
+}
+.wx-swiper-dot-active::before {
+  color: #ff2c29;
+}
+
+.ht {
+  height: 110rpx;
+  position: relative;
+  padding: 18rpx 28rpx 22rpx 26rpx;
+}
+
+.ht-img {
+  width: 120rpx;
+  height: 78rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.clone {
+  background: #dfdfdf;
+  width: 1rpx;
+  height: 70rpx;
+  position: absolute;
+  left: 160rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-right: 24rpx;
+}
+
+.ht-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 186rpx;
+  height: 62rpx;
+}
+
+.ht-right .top {
+  color: #959595;
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.ht-right .down-text {
+  height: 100%;
+  color: #101010;
+  font-size: 24rpx;
+  margin-left: 40rpx;
+  word-spacing: 8rpx;
+  letter-spacing: 1rpx;
+}
+
+.down {
+  overflow: hidden;
+  height: 26rpx;
+}
+
+.down .down-icon {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  left: 0;
+}
+
+.kong {
+  width: 100%;
+  height: 30rpx;
+  background: #f5f5f7;
+}
+
+.tg {
+  position: relative;
+  padding: 22rpx 20rpx 24rpx 24rpx;
+}
+
+.tg .tg-top {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.tg .tg-right {
+  width: 106rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 24rpx;
+  font-size: 20rpx;
+  color: #101010;
+}
+
+.tg .tg-right text {
+  margin-right: 5rpx;
+}
+
+.tg-img {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tg .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 72rpx;
+  height: 36rpx;
+}
+
+.tg-content {
+  position: relative;
+  height: 88rpx;
+  font-size: 24rpx;
+  color: #101010;
+}
+
+.clo {
+  position: absolute;
+  left: 24rpx;
+  right: 0;
+  height: 1rpx;
+  background: #f5f5f7;
+}
+
+.tg-text {
+  height: 24rpx;
+  position: absolute;
+  left: 112rpx;
+  font-size: 24rpx;
+  color: #101010;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.sy {
+  height: 214rpx;
+  padding: 22rpx 0 29rpx 24rpx;
+  font-size: 24rpx;
+  color: #959595;
+  position: relative;
+}
+
+.sy .sy-list {
+  padding-right: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  display: flex;
+  height: 160rpx;
+}
+
+.sy .sy-item {
+  flex: 0 0 auto;
+  width: 128rpx;
+  height: 100%;
+  margin-right: 53rpx;
+  border-radius: 10rpx;
+}
+
+.sy .sy-bg {
+  position: relative;
+  border-radius: 10rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.mh {
+  filter: blur(3px);
+  width: 100%;
+  height: 100%;
+}
+
+.sy-mh {
+  border-radius: 10rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.sy .sy-icon {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  width: 80rpx;
+  height: 80rpx;
+  left: 17rpx;
+  top: 19rpx;
+}
+
+.sy-bg .sy-sm-icon {
+  width: 29rpx;
+  height: 29rpx;
+  position: absolute;
+  top: 69rpx;
+  right: 19rpx;
+  z-index: 2;
+}
+
+.sy-down-icon {
+  position: absolute;
+  bottom: 19rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 56rpx;
+  height: 22rpx;
+}
+
+.sy-down-nv {
+  width: 12rpx;
+  height: 15rpx;
+  position: absolute;
+  left: 6rpx;
+  top: 5rpx;
+}
+
+.sy-down-text {
+  height: 15rpx;
+  width: auto;
+  position: absolute;
+  left: 30rpx;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+  font-size: 15rpx;
+  color: #fff;
+}
+
+/*我的圈子*/
+
+.myqz {
+  padding: 22rpx 0 30rpx 24rpx;
+}
+
+.my-no {
+  font-size: 24rpx;
+  color: #101010;
+  margin-top: 30rpx;
+}
+
+/*全部圈子*/
+
+.qz-title {
+  width: auto;
+  height: 24rpx;
+  color: #959595;
+  font-size: 24rpx;
+}
+
+.qz {
+  padding: 22rpx 20rpx 30rpx 24rpx;
+}
+
+.qz-list {
+  position: relative;
+  margin-top: 15rpx;
+  height: 138rpx;
+}
+
+.qz-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.qz-content {
+  position: absolute;
+  left: 135rpx;
+  height: 100rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.qz-name {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #101010;
+}
+
+.qz-clone {
+  position: absolute;
+  left: 138rpx;
+  right: 0;
+  /*bottom: 0;*/
+  height: 1rpx;
+  background: #f5f5f7;
+}
+
+.qz-hard {
+  margin-top: 9rpx;
+  margin-left: 15rpx;
+  display: inline-block;
+  font-size: 18rpx;
+  color: #959595;
+}
+
+.qz-dis {
+  font-size: 24rpx;
+  color: #959595;
+  margin-top: 25rpx;
+}
+
+.gz {
+  width: 90rpx;
+  height: 46rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.list-title {
+  padding: 24rpx 0 22rpx 24rpx;
+}
+
+.list-title .list-title-text {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.item-0 .qz-clone {
+  display: none;
+}
+
+.swiper-tab-item1 {
+  background-image: url(../../img/community_post@3x.png);
+}
+
+.swiper-tab-item1.active {
+  background-image: url(../../img/community_post_big@3x.png);
+}
+
+.swiper-tab-item {
+  width: 33.33%;
+  height: 130rpx;
+  background-size: 131rpx 130rpx;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.swiper-tab-item.active {
+  background-size: 154rpx 153rpx;
+  height: 153rpx;
+}
+
+.swiper-tab-item2 {
+  background-image: url(../../img/community_god@3x.png);
+}
+
+.swiper-tab-item2.active {
+  background-image: url(../../img/community_god_big@3x.png);
+}
+
+.swiper-tab-item3 {
+  background-image: url(../../img/community_poularity@3x.png);
+}
+
+.swiper-tab-item3.active {
+  background-image: url(../../img/community_poularity_big@3x.png);
+}
+
+.swiper-tab {
+  padding: 20rpx 0;
+  position: relative;
+  border-bottom: 1rpx solid #dfdfdf;
+}
+
+.right-clone {
+  position: absolute;
+  width: 1rpx;
+  height: 60rpx;
+  display: inline-block;
+  background: #dfdfdf;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.right-clone1 {
+  left: 250rpx;
+}
+
+.right-clone2 {
+  left: 505rpx;
+}
+
+.king {
+  position: relative;
+  height: 160rpx;
+  width: 705rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #dfdfdf;
+}
+
+.king-num {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19rpx;
+  margin: auto;
+  height: 19rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #535353;
+}
+
+.king-num-0 {
+  background-image: url(../../img/community_champion@3x.png);
+  background-size: 48rpx 62rpx;
+  background-repeat: no-repeat;
+  width: 48rpx;
+  height: 62rpx;
+  color: transparent;
+  left: 0;
+}
+
+.king-num-1 {
+  background-image: url(../../img/community_runer@3x.png);
+  background-size: 48rpx 62rpx;
+  background-repeat: no-repeat;
+  width: 48rpx;
+  height: 62rpx;
+  color: transparent;
+  left: 2rpx;
+}
+
+.king-num-2 {
+  background-image: url(../../img/community_third@3x.png);
+  background-size: 48rpx 62rpx;
+  background-repeat: no-repeat;
+  width: 48rpx;
+  height: 62rpx;
+  color: transparent;
+  left: 0;
+}
+
+.king-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 68rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  margin: auto;
+}
+
+.king-content {
+  height: 105rpx;
+  position: absolute;
+  left: 217rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.king-text {
+  display: inline-block;
+  font-size: 30rpx;
+  color: #101010;
+  align-self:flex-start;
+}
+
+.king-sex {
+  margin-left: 10rpx;
+  display: inline-block;
+  width: 54rpx;
+  height: 24rpx;
+  font-size: 18rpx;
+  color: #fff;
+  text-align: right;
+  line-height: 24rpx;
+  padding-right: 7rpx;
+  background-size: 54rpx 24rpx;
+}
+
+.king-sex.man {
+  background-image: url(../../img/community_post_list_man30_30@3x.png);
+}
+
+.king-sex.women {
+  background-image: url(../../img/community_post_list_woman30_30@3x.png);
+}
+
+.king-tie {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.king-box.active {
+  display: block;
+}
+
+.king-box.hidden {
+  display: none;
+}
+.zan{
+  height: 34rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 600rpx;
+  font-size: 20rpx;
+  color:#fc4e8b;
+  font-weight: 400;
+}
+.zan-icon{
+  margin-right:7rpx; 
+  width: 34rpx;
+  height: 27rpx;
+}
+.age{
+  width: 62rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+.king-content-down{
+  font-size: 24rpx;
+  color: #959595;
+  align-self:flex-end;
+  margin-top: 30rpx;
+}

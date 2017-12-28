@@ -1,0 +1,17 @@
+
+<!--pages/login/verification/verification.wxml-->
+<view class="content">
+  <view class="countries">
+    <text>中国(+86)</text>
+    <image src="/img/login/sign_in_arrow@2x.png"></image>
+  </view>
+  <view class="form">
+    <view class="phone input" style="margin-bottom:30rpx;">
+      <image class="icon" src="/img/login/sign_in_iphone_number@2x.png"></image>
+      <input maxlength="11" bindinput="bindIdInput" placeholder-class="color:#c4c4c4;font-size:26rpx;" placeholder="请输入您的手机号" />
+    </view>
+  </view>
+  <view wx:if="{{correct==0}}" class="login">发送验证码</view>
+  <view wx:if="{{correct==1}}" bindtap="login" class="login login-true">发送验证码</view>
+  <image class="banner" src="/img/login/sign_in_background@2x.png"></image>
+</view>

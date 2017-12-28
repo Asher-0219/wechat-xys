@@ -1,0 +1,76 @@
+.list{
+   padding-left: 20rpx;
+}
+.item{
+    height: 140rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.line{
+    position: absolute;
+    height: 1px;
+    background: #dfdfdf;
+    left: 126rpx;
+    right: 0;
+    bottom: 0;
+}
+.avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius:10rpx; 
+    margin-right: 26rpx;
+}
+.name-top{
+    display: flex;
+}
+.name-top .name{
+    font-size: 28rpx;
+    color: #101010;
+    margin-right: 16rpx;
+}
+.age{
+    position: relative;
+}
+.age text{
+    position: absolute;
+    right: 10rpx;
+    line-height: 32rpx;
+    color: #fff;
+    font-size: 18rpx;
+}
+.age-img{
+    width: 64rpx;
+    height: 32rpx;
+}
+.focus-img{
+    margin-left: auto;
+    margin-right: 20rpx;
+}
+.focus-img image{
+    width: 35rpx;
+    height: 35rpx;
+}
+.name-down{
+  width: 500rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;  
+    font-size: 24rpx;
+  color: #c4c4c4;
+}
+.focus-icon image{
+    margin-bottom: 8rpx;
+}
+.focus-icon{   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18rpx;
+    color: #ff4d8f;
+}
+.add-like{
+    display: inline-block;
+    width: 72rpx;
+    text-align: center;
+}

@@ -1,0 +1,142 @@
+
+<!--pages/message/xysChat/xysChat.wxml-->
+<scroll-view scroll-y="true" style="height:500px" scroll-into-view="scrollTop">
+  <view class="list" data-id="0" bindtap="hide">
+    <view wx:for="{{msgs}}" class="item" wx:key="{{index}}">
+      <block wx:if="{{item.flow=='out'}}">
+        <view class="date" wx:if="{{index==0||item.time-msgs[index-1].time>300000}}">{{item.timeTrans}}</view>
+        <view class="message">
+          <view wx:if="{{item.type=='image'}}" class="imgBox" style="margin-left:auto">
+            <image bindtap="imageView" data-img-src="{{item.file.url}}" src="{{item.file.url}}"></image>
+          </view>
+          <view bindtap="goUserCenter" data-uid="{{item.from}}" class="avatar" style="margin-left:16rpx;margin-right:0">
+            <image src="{{users['p2p-'+item.from].avatar}}"></image>
+          </view>
+          <view wx:if="{{item.type=='text'}}" class="news" style="background:#fff;order:-1;margin-left:auto;">{{item.text}}</view>
+        </view>
+      </block>
+      <block wx:if="{{item.flow=='in'}}">
+        <view class="date" wx:if="{{index==0||item.time-msgs[index-1].time>300000}}">{{item.timeTrans}}</view>
+        <view class="message">
+          <view bindtap="goUserCenter" data-uid="{{item.from}}" class="avatar">
+            <image src="{{users['p2p-'+item.from].avatar}}"></image>
+          </view>
+          <view wx:if="{{item.type=='text'}}" class="news">{{item.text}}</view>
+          <view wx:if="{{item.type=='image'}}" class="imgBox">
+            <image bindtap="imageView" data-img-src="{{item.file.url}}" src="{{item.file.url}}"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>
+<view class="fixed" id="scrollTop" wx:if="{{!inputGiftShow}}">
+  <view class="input">
+    <input value="{{inputValue}}" bindinput="bindKeyInput" />
+    <view bindtap="sendText" class="send" style="background:{{inputValue?'#ff4d8d':''}}">发送</view>
+  </view>
+  <view class="icons">
+    <block wx:for="{{icons}}" wx:key="{{index}}">
+      <image data-id="{{index}}" bindtouchend="backImg" bindtouchstart="changeImg" class="{{index==3?'call':''}}" src="{{item.src}}"></image>
+    </block>
+  </view>
+  <view id="emotions" wx:if="{{show[1]}}" animation="{{animation}}">
+    <image wx:for="{{ emotions }}" style="margin-right:{{(index+1)%7==0?'0':''}}" wx:key="{{index}}" src="{{item.src}}" class="emo" data-name="{{item.name}}" bindtap="chooseEmotion"></image>
+  </view>
+</view>
+
+<!--打招呼-->
+<view class="tips-list" wx:if="{{show[2]}}" data-id="2" bindtap="hide">
+  <view class="tips-content" catchtap="noHide">
+    <view class="tips-title">打招呼内容</view>
+    <view bindtouchstart="addTipsBac" bindtouchend="sendTips" data-id="{{index}}" class="tips-item" style="background:{{tapId==index?'#ccc':''}}" wx:for="{{tipList}}" wx:key="{{index}}">{{item}}</view>
+    <view class="change-new" catchtap="getNew">换一批</view>
+  </view>
+</view>
+
+<!--礼物列表-->
+<view class="gifts-list" wx:if="{{show[0]}}">
+  <view class="gift-title">
+    <view class="title-text">礼物</view>
+  </view>
+  <view class="gift-content">
+    <swiper indicator-dots="true">
+      <block wx:for="{{giftListSwiper}}" wx:for-index="swiperIndex" wx:key="">
+        <swiper-item>
+          <view wx-if="{{swiperIndex*8<=idx&&idx<=(swiperIndex+1)*8-1}}" data-id="{{idx}}" bindtap="chooseGift" wx:key="{{index}}" wx:for-item="gift" wx:for-index="idx" wx:for="{{giftList.data}}"
+           class="gift-item {{zIndex==idx?'active':''}}">
+            <image src="{{gift.icon}}"></image>
+            <text class="gift-name">{{gift.name}}</text>
+            <text class="gift-price">{{gift.worth}}U币</text>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="gift-footer">
+    <view class="ub">U币:
+      <text>{{giftList.remainUmony}}</text>
+    </view>
+    <view class="recharge">
+      <view class="recharge-btn">充值</view>
+      <view class="give-gift">
+        <view class="give-gift-othernum" wx:if="{{giftOtherNum}}">
+          <view class="give-gift-item give-gift-otheritem" bindtap="inputGiftNum">其它数量</view>
+          <view class="give-gift-item" bindtap="countGiftNum" data-gift-num="{{item.num}}" wx:for="{{giftList.data[zIndex].giftList}}">
+              <text>{{item.num}}</text><text>{{item.wish}}</text>
+          </view>
+        </view>
+        <view class="give-num" bindtap="giftNumber"><view>{{giftNum}}</view><view style="margin-left:auto;">></view></view>
+        <view bindtap="givePersonGift" class="give-btn">赠送</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{inputGiftShow}}" class="input gift-input-value">
+  <input value="{{inputGiftValue}}" type="number" placeholder="{{giftPlaceholder}}" bindinput="bindGiftInput" />
+  <view bindtap="setGiftNum" class="send" style="background:#ff4d8d">确定</view>
+</view>
+
+<!--聊五毛-->
+<view class="wumao" wx:if="{{show[4]}}" data-id="4" bindtap="hide">
+  <view class="wumao-content" catchtap="noHide">
+    <view class="wumao-title">
+      <image src="/img/meo/emoji_miyanxiao_1@2x.png"></image>
+      <view class="wumao-info">
+        <view class="right-Triangle"></view>
+        <view class="left-Triangle">您即将进入聊五毛模式消费8U币30分钟内阅后即焚</view>
+      </view>
+    </view>
+    <view class="goWumao">马上进入</view>
+    <view class="backChat" data-id="4" catchtap="hide">继续聊天</view>
+  </view>
+</view>
+
+<!--打电话-->
+<view class="xys-shade" wx:if="{{show[3]}}" data-id="3" bindtap="hide">
+  <view class="xys-shade-content call" catchtap="noHide">
+    <view class="wumao-title">
+      <image src="/img/meo/emoji_wa_1@2x.png"></image>
+      <view class="wumao-info">
+        <view class="right-Triangle"></view>
+        <view class="left-Triangle">您即将向对方发起通话高质通话效果更棒哦</view>
+      </view>
+    </view>
+    <view class="call-text">
+      <view class="call-top">普通通话</view>
+      <view class="call-down">(15U币/分钟)</view>
+    </view>
+    <view class="call-text" style="color:#ff4e8e;">
+      <view class="call-top">高质通话</view>
+      <view class="call-down">(17U币/分钟)</view>
+    </view>
+    <view class="call-text" data-id="3" catchtap="hide" style="border:none;color:#959595;line-height:104rpx;">取消</view>
+  </view>
+</view>
+<view hidden="{{!showImg}}" class="xys-mask" bindtap="imageView">
+  <view class="xys-img-wrapper">
+    <view class="xys-img-container">
+      <image class="bigImg" src="{{imgSrc}}" style="width:{{imageWidth}}px;height:{{imageHeight}}px;margin-left:{{imageMarginLeft}}px;margin-top:{{imageMarginTop}}px" bindload="imageLoad" />
+    </view>
+  </view>
+</view>

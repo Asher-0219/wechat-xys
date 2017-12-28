@@ -1,0 +1,141 @@
+
+<!--头部-->
+<!--<view class="header" data-id="{{data.uid}}" bindtap="showAction" wx:if="{{input}}">
+  <view class="avatar">
+    <image src="{{data.avatar}}"></image>
+  </view>
+  <view class="header-name">
+    <text class="name">{{data.username}}</text>
+    <view class="level-box">
+      <image class="level" src="{{data.starsIcon}}"></image>
+      <view class="level-bg level-{{data.stars}}">
+        <text>{{data.honor}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="more">
+    <image src="/img/personal_center_arrow@2x.png"></image>
+  </view>
+</view>
+<view class="header" bindtap="login" wx:if="{{!input}}">
+  <view class="login">去登录</view>
+</view>-->
+<view class="header" bindtap="login">
+  <view class="login">去登录</view>
+</view>
+<!--关注-->
+<view class="header-list">
+  <view bindtap="myFocus" class="item like">
+    <text class="title-text">关注</text>
+    <text class="num">{{data.weiboguan}}</text>
+  </view>
+  <view class="item fans">
+    <text bindtap="myFans" class="title-text">粉丝</text>
+    <text class="num">{{data.weibofeng}}</text>
+  </view>
+  <view bindtap="showMyDynamic" class="item dynamic">
+    <text class="title-text">动态</text>
+    <text class="num">{{data.notificationInfo}}</text>
+  </view>
+  <view bindtap="visitor" data-id="{{data.uid}}" class="item visit">
+    <text class="title-text">访客</text>
+    <text class="num">{{data.visitorTotal}}</text>
+  </view>
+  <view class="item zan">
+    <text class="title-text">点赞</text>
+    <text class="num">{{data.zans}}</text>
+  </view>
+</view>
+
+<!--占位符-->
+<view class="kong"></view>
+
+<!--列表-->
+<view class="list">
+  <view data-id="1" bindtap="showMore" class="list-item">
+    <image class="item-icon" src="/img/personal_center_mall@2x.png"></image>
+    <text class="item-title">我的商城</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="list">
+  <view class="list-item">
+    <view class="small-line"></view>
+    <image class="item-icon" src="/img/personal_center_online.png"></image>
+    <text class="item-title">在线状态</text>
+    <image bindtap="setOnline" data-online="{{online}}" class="online" wx:if="{{online==0}}" src="/img/personal_center_off_line.png"></image>
+    <image bindtap="setOnline" data-online="{{online}}" class="online" wx:if="{{online==1}}" src="/img/personal_center_on_line.png"></image>
+  </view>
+   <view data-id="2" bindtap="showMore" class="list-item">
+    <view class="small-line"></view>
+    <image class="item-icon" src="/img/personal_center_member@2x.png"></image>
+    <text class="item-title">会员中心</text>
+    <image class="new-img" src="/img/personal_center_new@2x.png"></image>
+    <view class="new-more more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view data-id="3" bindtap="showMore" class="list-item">
+    <image class="item-icon" src="/img/personal_center_me_task.png"></image>
+    <text class="item-title">我的任务</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view data-id="4" bindtap="showMore" class="list-item" wx:if="{{data.gender==2}}">
+    <image class="item-icon" src="/img/personal_center_dedicated_line.png"></image>
+    <text class="item-title">进驻专线</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="list">
+     <view data-id="5" bindtap="showMore" class="list-item">
+    <view class="small-line"></view>
+    <image class="item-icon" src="/img/personal_center_the_wallet@2x.png"></image>
+    <text class="item-title">我的钱包</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>   
+   <view data-id="6" bindtap="showMore" class="list-item" wx:if="{{data.gender==2}}">
+    <view class="small-line"></view>
+    <image class="item-icon" src="/img/personal_center_to_make_money@2x.png"></image>
+    <text class="item-title">我要赚钱</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+   <view data-id="7" bindtap="showMore" class="list-item">
+    <view class="small-line"></view>   
+    <image class="item-icon" src="/img/personal_center_my_artifact@2x.png"></image>
+    <text class="item-title">我的神器</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view class="list-item" data-id="8" bindtap="showMore">
+    <image class="item-icon" src="/img/personal_center_my_achievements@2x.png"></image>
+    <text class="item-title">我的成就</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="list">
+     <view data-id="9" bindtap="showMore" class="list-item">   
+    <image class="item-icon" src="/img/personal_center_online_customer_service@2x.png"></image>
+    <text class="item-title">在线客服</text>
+    <view class="more">
+      <image src="/img/personal_center_arrow@2x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="kong"></view>

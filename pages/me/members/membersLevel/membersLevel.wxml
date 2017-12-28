@@ -1,0 +1,41 @@
+
+<!--pages/me/members/membersLevel/membersLevel.wxml-->
+<view class="title">
+  <image class="titleicon" src="{{data.titleicon}}"></image>
+  <view class="desc">{{data.desc}}</view>
+  <view class="group">
+    <view class="group-left">
+      <image src="{{data.vipgroupLower}}"></image>
+      <text>{{data.viplowerCredit}}</text>
+    </view>
+    <view class="progress">
+      <progress stroke-width="15" color="#ff566d" active="true" percent="{{percent}}" />
+      <text>还差<text class="num">{{data.othreDescNum}}</text>点成长值升到下一级</text>
+    </view>
+    <view class="group-right">
+      <image src="{{data.vipgroupHigher}}"></image>
+      <text>{{data.vipHigherCredit}}</text>
+    </view>
+  </view>
+</view>
+<view class="content">
+  <view class="content-title">等级介绍</view>
+  <view class="table">
+    <view class="table-content table-{{index+1}}" wx:for="{{table1}}" wx:kye="{{index}}">
+      <view class="level" style="color:{{item.vip==data.vipType?'#fece3e':''}}">VIP{{item.vip}}</view>
+      <view class="exp">{{item.exp}}</view>
+    </view>
+  </view>
+  <view class="table">
+    <view class="table-content table-{{index+1}}" wx:for="{{table2}}" wx:kye="{{index}}">
+      <view class="level" style="color:{{item.vip==data.vipType?'#fece3e':''}}">VIP{{item.vip}}</view>
+      <view class="exp">{{item.exp}}</view>
+    </view>
+  </view>
+  <view class="table3">
+    <view>VIP月/年: 1-4: +11/+15, 5: +15/+20, 6-8: +25/+31</view>
+    <view>开通一次年费赠送500成长值, 只限VIP5以下</view>
+    <view class="down">到后期每天减5点成长值</view>
+  </view>
+</view>
+<view class="renewal">VIP续费</view>

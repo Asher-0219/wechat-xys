@@ -1,0 +1,136 @@
+.xys-navbar-item-on {
+  color: #fff;
+}
+.header{
+    box-sizing: border-box;
+    padding:  20rpx 0 40rpx 0;
+    background: #fafafa;
+}
+.xys-navbar-item-on text {
+  padding: 8rpx 21rpx;
+  background: #ff77a4;
+  border-radius: 20rpx;
+}
+
+.xys-navbar {
+  height: 86rpx;
+  font-size: 26rpx;
+  margin-bottom: 64rpx;
+  border: none;
+  padding: 0 104rpx;
+    background: #fafafa;  
+}
+/*前三名*/
+.post-img{
+    width: 48rpx;
+    height: 64rpx;
+    margin-bottom: 20rpx;
+}
+.title-list{
+    padding: 0 76rpx;
+    display: flex;
+    align-items: center;
+}
+.title-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-item text{
+    font-size: 20rpx;
+}
+.title-icon{
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    border: 4rpx solid #c1b7b3;
+    box-sizing: border-box; 
+    margin-bottom: 26rpx;  
+}
+.t-1{
+    order: 0;
+}
+.t-0{
+    margin: 0 52rpx;    
+    order: 1;
+}
+.t-0 text{
+    color: #ffa618;
+}
+.t-1 text{
+    color: #64c7fa;
+}
+.t-2 text{
+    color: #cfb8ff;
+}
+.t-0 .title-icon{
+    width: 230rpx;
+    height: 230rpx;
+    border: 6rpx solid #ffcc00;
+    box-sizing: border-box;
+}
+.t-2{
+    order: 2;
+}
+/*后面的排名*/
+.list{
+    height: 160rpx;
+    padding-left: 44rpx;
+    display: flex;
+    align-items: center;
+}
+.list-icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+    margin-right: 26rpx;
+}
+.icons image{
+    width: 30rpx;
+    height: 30rpx;
+    display: inline-block;
+}
+.icons{
+    position: relative;
+    top: 3rpx;
+    display: inline-block;
+}
+.age-img {
+  width: 62rpx;
+  height: 32rpx;
+  display: inline-block;
+}
+.age-box {
+  display: inline-block;
+  position: relative;
+  margin-right: 6rpx;
+  top: 3rpx;
+}
+
+.icons image{
+    margin-right: 6rpx;
+}
+.age-box text {
+  position: absolute;
+  right: 5rpx;
+  font-size: 20rpx;
+  color: #fff;
+  line-height: 32rpx;
+}
+.num{
+    font-size: 26rpx;
+    color: #4c4c4c;
+    margin-right: 44rpx;
+}
+.post-num{
+    font-size: 24rpx;
+    color: #ff4d8d;
+    display: block;
+    margin-top: 20rpx;
+}
+.nickname{
+    font-size: 32rpx;
+    color: #101010;
+    margin-right: 10rpx;
+    line-height: 32rpx;
+}

@@ -1,0 +1,145 @@
+/* pages/login/sms/sms.wxss */
+
+/* pages/login/verification/verification.wxss */
+
+/* pages/me/login/login.wxss */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.countries {
+  margin-top: 150rpx;
+  margin-bottom: 100rpx;
+  font-size: 28rpx;
+  color: #303030;
+  text-align: center;
+}
+
+.countries image {
+  width: 21rpx;
+  height: 12rpx;
+  margin-left: 12rpx;
+}
+
+.icon {
+  margin-right: 38rpx;
+  width: 22rpx;
+  height: 30rpx;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.form {
+  margin-bottom: 70rpx;
+  margin-top: 250rpx;
+  display: flex;
+  align-items: center;
+}
+.form input{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 10rpx;
+    border: 1px solid #dfdfdf;
+    text-align: center;
+    font-size: 36rpx;
+    color: #303030;
+    margin-right: 56rpx;
+}
+.form .active{
+    border: 1px solid #ff77a4;
+}
+.password {
+  position: relative;
+}
+
+.can-see {
+  width: 31rpx;
+  height: 21rpx;
+  position: absolute;
+  bottom: 25rpx;
+  right: 15rpx;
+  z-index: 999;
+}
+
+.input input {
+  width: 466rpx;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 22rpx;
+  color: #303030;
+  padding-left: 10rpx;
+}
+
+.login {
+  text-align: center;
+  width: 625rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  background: #ffc6dc;
+  border-radius: 60rpx;
+  color: #fff;
+  margin: 0 auto;
+  margin-bottom: 68rpx;  
+}
+
+.login-true {
+  background: #ff77a4;
+}
+
+.fast-login {
+  margin-bottom: 158rpx;
+  font-size: 24rpx;
+  color: #303030;
+}
+
+.three-login {
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+  color: #303030;
+  margin-bottom: 40rpx;
+}
+
+.three-login .line {
+  height: 1px;
+  background: #dfdfdf;
+  width: 70rpx;
+}
+
+.three-login .title {
+  margin: 0 24rpx;
+}
+
+.three-login-icon image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.three-login-icon {
+  margin-bottom: 30rpx;
+}
+
+.login-footer {
+  font-size: 20rpx;
+  color: #303030;
+}
+
+.banner {
+  width: 100%;
+  height: 213rpx;
+  position: absolute;
+  bottom: 0;
+}
+.text{
+  color: #ff6ea2;
+  font-size: 24rpx;
+  text-align: center;
+}

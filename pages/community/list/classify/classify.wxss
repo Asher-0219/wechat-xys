@@ -1,0 +1,133 @@
+.xys-navbar-item-on {
+  color: #fff;
+}
+
+.xys-navbar-item-on text {
+  padding: 8rpx 21rpx;
+  background: #ff77a4;
+  border-radius: 20rpx;
+}
+
+.xys-navbar {
+  height: 86rpx;
+  font-size: 26rpx;
+  margin-bottom: 18rpx;
+}
+
+page {
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.title-img {
+  width: 127rpx;
+  height: 129rpx;
+  display: inline-block;
+  position: absolute;
+  top: 18rpx;
+  left: 18rpx;
+}
+
+.age-img {
+  width: 62rpx;
+  height: 32rpx;
+  display: inline-block;
+}
+
+.avatar {
+  width: 702rpx;
+  height: 702rpx;
+}
+
+.list-content {
+  position: relative;
+  font-size: 0;
+  display: inline-block;
+}
+
+.l-1 {
+  margin-right: 18rpx;
+}
+
+.online {
+  color: #d1d1d1;
+  font-size: 20rpx;
+  position: absolute;
+  right: 18rpx;
+  top: 18rpx;
+}
+
+.voice {
+  position: absolute;
+  color: #ff4d8d;
+  font-size: 20rpx;
+  right: 18rpx;
+  bottom: 22rpx;
+}
+
+.name {
+  position: absolute;
+  left: 18rpx;
+  bottom: 22rpx;
+  display: inline-block;
+}
+
+.n {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #4c4c4c;
+  margin-right: 25rpx;
+}
+
+.age {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.value {
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.cost {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.voi {
+  color: #ff4d8d;
+  font-size: 20rpx;
+  margin-bottom: 28rpx;
+}
+
+.onl {
+  color: #d1d1d1;
+  font-size: 20rpx;
+}
+
+.value-num {
+  font-size: 24rpx;
+  color: #d3488c;
+}
+
+.nickname {
+  color: #fff;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}
+
+.age-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.age-box text {
+  position: absolute;
+  right: 5rpx;
+  font-size: 20rpx;
+  color: #fff;
+}

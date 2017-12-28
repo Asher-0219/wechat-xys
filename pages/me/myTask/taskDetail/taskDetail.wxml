@@ -1,0 +1,31 @@
+<!--pages/me/myTask/taskDetail/taskDetail.wxml-->
+<view class="taskdetail">
+	<view class="td-tasktitle">{{data.rulename}}</view>
+	<view class="td-taskcontent">
+		<text wx-if="{{rid!=48}}">{{missionText[rid].text}}</text>
+		<text wx-if="{{rid==48}}">赠送他人{{data.otherData}}x1，即可完成该任务</text>
+		<!-- <text wx-if="rid==54">指定昵称:{{data.nameData}},指定id:{{data.otherData}}</text> -->
+	</view>
+	<view class="td-tasktitle">任务进度</view>
+	<view class="td-taskfinish">完成情况：{{data.times}}/{{data.handlenum}}</view>
+	<view class="td-taskfinish" style="text-align: center;" wx-if="{{rid==108}}">
+		<view class="td-tt-center">
+			<block v-for="item in data.otherDataArr">
+				<view class="td-taskfinish-text">
+					<view wx-if="{{item.st==0}}">{{item.uid}}</view>
+					<view wx-if="{{item.st>0}}" class="td-finish-item">{{item.uid}}</view>
+					<view wx-if="{{$index!=data.otherDataArr.length-1}}">&nbsp;、&nbsp;</view>
+				</view>
+				<br wx-if="{{$index%5==4}}" />
+			</block>
+		</view>
+	</view>
+	<view class="td-tasktitle">任务奖励</view>
+	<view class="td-taskimg">
+		<image src="/img/task/personal_task_process_experience.png" alt="" />
+	</view>
+	<view class="td-taskexperience" wx-if="{{data.expnum!=0}}">+{{data.expnum}}EXP</view>
+	<view class="td-taskexperience" wx-if="{{data.expu!=0}}">+{{data.expu}}U币</view>
+	<view class="td-finish td-finishun" wx-if="{{data.finish==0}}" bindtap="goFinish">去完成</view>
+	<view class="td-finish td-finished" wx-if="{{data.finish==1}}">已完成</view>
+</view>

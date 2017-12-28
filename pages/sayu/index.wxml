@@ -1,0 +1,290 @@
+    <view class="sayu {{sayuSearch?'':'sayu-filter-blur'}}">
+    <view class="sayu-fixed">
+        <view class="sayu-head">
+            <image hidden="{{sayuIndex}}" bindtap="seeFilter" src="../../img/sayu/sayu_screen_click@3x.png" />
+            <view hidden="{{!sayuIndex}}" class="sayu-head-space"></view>
+            <view class="sayuh-choose" bindtap="sayuSwitchPage">
+                <image hidden="{{sayuIndex}}"  src="../../img/sayu/sayu_navigation_one@3x.png" />
+                <image hidden="{{!sayuIndex}}" src="../../img/sayu/sayu_navigation_two@3x.png" />
+                <view class="sayuh-choose-position {{!sayuIndex?'sayuh-choose-font':''}}">首页</view>
+                <view class="sayuh-choose-position {{!sayuIndex?'':'sayuh-choose-font'}}">专线</view>
+            </view>
+            <image bindtap="seeSearch" src="../../img/sayu/sayu_search_click@3x.png" />
+        </view>
+        <!-- 首页tab -->
+        <view hidden="{{sayuIndex}}" class="zsayu-tab">
+            <view class="xys-navbar">
+                <block wx:for="{{tabs}}" wx:key="{{index}}">
+                    <view id="{{index}}" bindtap="tabClick" class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">{{item}}</view>
+                </block>
+            </view>
+        </view>
+        <!-- 声优专线tab -->
+        <scroll-view hidden="{{!sayuIndex}}" scroll-x="true">
+          <view class="header">
+            <block wx:for="{{titleList}}" wx:key="{{index}}">
+              <view bindtap="zxtabClick" data-num="{{item.num}}" data-name="{{item.name}}" id="{{index}}" data-id="{{item.id}}" class="header-item {{zxactiveIndex==index?'header-item-on':''}}">{{item.name}}</view>
+            </block>
+          </view>
+        </scroll-view>
+    </view>
+    <!-- 首页 -->
+    <swiper hidden="{{sayuIndex}}" class="zsayu-swiper" current="{{activeIndex}}" duration="300" bindchange="swiperChange" style="height:{{scrollHeight}}px;">
+        <block wx:for="{{tabs}}" wx:for-index="index">
+            <swiper-item>
+                <scroll-view style="height:{{scrollHeight}}px;" lower-threshold="400" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+        	    	<view wx-if="{{index==0}}" class="zswiper-recommend">
+        	    		<view class="zsr-head">
+        	    			今日推荐
+        	    		</view>
+                        <swiper duration="300" bindchange="swiperChange" style="height:168rpx;">
+                            <block wx:for="{{todayStar}}" wx:for-item="itemStar" wx:for-index="indexStar">
+                                <swiper-item>
+                                    <view class="zsr-info" bindtap="showAction" data-uid="{{itemStar.uid}}">
+                                        <view class="zsr-avatar">
+                                            <image src="{{itemStar.avatar}}" />
+                                        </view>
+                                        <view class="zsr-right">
+                                            <view class="zsrr-person">
+                                                <view class="zsrrt-left">
+                                                    <view>{{itemStar.nickname}}</view>
+                                                    <view class="zsrrl-voice">
+                                                        <audio src="{{itemStar.voiceFile}}" bindended="sayuVoiceEnd" bindplay="sayuVoicePlay" bindpause="sayuVoicePause" data-voice-id="{{indexStar}}" data-voice-source="todayStarVoice" id="zsrrl-audio{{indexStar}}" catchtap="sayuVoiceSwitch">
+                                                            <image hidden="{{todayStarVoice[indexStar]!=0}}" src="../../img/sayu/sayu_sound_orange@3x.png" />
+                                                            <image hidden="{{todayStarVoice[indexStar]!=1}}" src="../../img/sayu/sayu_sound_orange_stop@3x.png" />
+                                                            <view class="zsrrv-time">{{itemStar.voiceSeconds}}"</view>
+                                                        </audio>
+                                                    </view>
+                                                </view>
+                                                <view class="zsrr-description">
+                                                    {{itemStar.suggest}}
+                                                </view>
+                                            </view>
+                                            <view class="zsrr-callinfo">
+                                                <image src="../../img/sayu/sayu_call_orange@3x.png" />
+                                                <view class="zsrr-cost">{{itemStar.voiceTariff}}U币/分</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+    					<image class="zsr-divide" src="../../img/sayu/sayu_thread@3x.png" />
+        	    	</view>
+        	    	<!-- 列表 -->
+        	    	<view wx:for="{{sayuList[index]}}" wx:for-item="sayu" wx:for-index="sindex" bindtap="showAction" data-uid="{{sayu.uid}}" class="zswiper-list">
+        	    		<image class="zswl-avatar" src="{{sayu.avatar}}" />
+        	    		<view class="zswl-info">
+        	    			<view class="zswli-person">
+        	    				<view class="zswli-person-nickname">{{sayu.nickname}}</view>
+        	    				<view class="zswli-person-gender">
+        	    					<image wx-if="{{sayu.gender==1}}" src="../../img/categories/community_post_list_man30_30@3x.png" />
+    								<image wx-if="{{sayu.gender==2}}" src="../../img/categories/community_post_list_woman30_30@3x.png" />
+        	    					<view class="zswli-person-age">{{sayu.age}}</view>
+        	    				</view>
+        	    				<view class="zswli-person-badge">
+        	    					<image wx-if="{{sayu.goodseiyuu==1}}" src="../../img/categories/my_profile_famous.png" />
+        	    					<image wx-if="{{sayu.haoLv==1}}" src="../../img/categories/my_profile_diamond.png" />
+        	    					<image wx-if="{{sayu.newUser==1}}" src="../../img/categories/my_profile_new_type.png" />
+        	    				</view>
+        	    			</view>
+        	    			<view class="zswli-voice">
+        	    				<view class="zswli-voice-hear">
+                                    <audio src="{{sayu.voiceFile}}" bindended="sayuVoiceEnd" bindplay="sayuVoicePlay" bindpause="sayuVoicePause" data-voice-id="{{sindex}}" data-voice-source="sayuListVoice-{{index}}" id="zswli-audio{{index}}{{sindex}}" catchtap="sayuVoiceSwitch">
+                                        <image hidden="{{sayuListVoice[index][sindex]!=0}}" src="../../img/sayu/sayu_sound_violet@3x.png" />
+                                        <image hidden="{{sayuListVoice[index][sindex]!=1}}" src="../../img/sayu/sayu_sound_violet_stop@3x.png" />
+                                        <view class="zswli-voice-time">{{sayu.voiceSeconds}}"</view>
+                                    </audio>
+        	    				</view>
+        	    				<view class="zswli-voice-call">
+        	    					<image src="../../img/sayu/sayu_call_pink@3x.png" />
+        	    					<view class="zswli-voice-call-cost">{{sayu.voiceTariff}}U币/分</view>
+        	    				</view>
+        	    			</view>
+        	    			<view class="zswli-description">
+        	    				<view class="zswli-description-text">{{sayu.suggest}}</view>
+        	    				<view class="zswli-description-time">{{sayu.isOnline}}</view>
+        	    			</view>
+        	    		</view>
+        	    	</view>
+                </scroll-view>
+            </swiper-item>
+          </block>
+    </swiper>
+    <!-- 声优专线 -->
+    <view hidden="{{!sayuIndex}}" style="padding-top:166rpx">
+        <view class="content">
+          <view class="title">
+            <image class="title-img" src="/img/dedicated_line_bg.png"></image>
+            <text>{{name}} ({{num}}人在线)</text>
+          </view>
+          <scroll-view style="height:{{zxwindowHeight}}px;" lower-threshold="40" scroll-y="true" bindscrolltolower="zxlower">
+            <view class="list">
+              <block wx:for="{{list}}" wx:key="{{index}}">
+                <view class="list-item" style="margin-right:{{index%2==0?14:''}}rpx">
+                  <view class="item-top">
+                    <image bindtap="showAction" data-uid="{{item.uid}}" class="avatar" src="{{item.avatar}}"></image>
+                    <view class="item-icon">
+                      <view class="age">
+                        <image class="gender" wx-if="{{item.gender==1}}" src="/img/categories/community_post_list_man30_30@3x.png" />
+                        <image class="gender" wx-if="{{item.gender==2}}" src="/img/categories/community_post_list_woman30_30@3x.png" />
+                        <text>{{item.age}}</text>
+                      </view>
+                      <view class="icons">
+                        <image wx-if="{{item.goodseiyuu==1}}" src="../../img/categories/my_profile_famous.png" />
+                        <image wx-if="{{item.viuceLv==1}}" src="../../img/categories/my_profile_stars.png" />
+                        <image wx-if="{{item.haoLv==1}}" src="../../img/categories/my_profile_diamond.png" />
+                        <image wx-if="{{item.newuser==1}}" src="../../img/categories/my_profile_new_type.png" />
+                      </view>
+                    </view>
+                  </view>
+                  <view class="item-down">
+                    <text class="name">{{item.username}}</text>
+                    <text class="voice">{{item.voiceTariff}}币/分</text>
+                    <view class="suggest">{{item.suggest}}</view>
+                    <view class="suggest" wx:if="{{item.suggest==''}}">暂无个性签名</view>            
+                    <view class="song">
+                      <audio src="{{item.voiceFile}}" bindended="playEnd" data-voice-id="{{index}}" id="catel-audio{{index}}">
+                        <image class="voice-img" catchtap="voicePlay" data-voice-id="{{index}}" src="{{voiceState[index]}}" />
+                        <text>{{item.voiceSeconds}}”</text>
+                      </audio>
+                      <view class="phone">
+                        <image src="/img/sayu_call_pink@3x.png"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </scroll-view>
+        </view>
+    </view>
+</view>
+<!-- 条件搜索 -->
+<view hidden="{{sayuFilter}}" class="zsayu-filter">
+    <view class="zsayu-filter-content">
+        <view class="zsf-title">头衔</view>
+        <view class="zsf-list">
+            <view wx:for="{{sayuFilterList.title}}" class="zsf-item {{filterChoose.title==index?'zsf-item-choose':'zsf-item-unchoose'}}" bindtap="filterChoose" data-item-status="{{subItem.status}}" data-item-category="title" data-item-id="{{subItem.id}}" wx:for-item="subItem">{{subItem.name}}</view>
+        </view>
+    </view>
+    <view class="zsayu-filter-content">
+        <view class="zsf-title">年龄</view>
+        <view class="zsf-list">
+            <view wx:for="{{sayuFilterList.age}}" class="zsf-item {{filterChoose.age==index?'zsf-item-choose':'zsf-item-unchoose'}}" bindtap="filterChoose" data-item-status="{{subItem.status}}" data-item-category="age" data-item-id="{{subItem.id}}" wx:for-item="subItem">{{subItem.name}}</view>
+        </view>
+    </view>
+    <view class="zsayu-filter-content">
+        <view class="zsf-title">资费设置</view>
+        <view class="zsf-list">
+            <view wx:for="{{sayuFilterList.tariff}}" class="zsf-item {{filterChoose.tariff==index?'zsf-item-choose':'zsf-item-unchoose'}}" bindtap="filterChoose" data-item-status="{{subItem.status}}" data-item-category="tariff" data-item-id="{{subItem.id}}" wx:for-item="subItem">{{subItem.name}}</view>
+        </view>
+    </view>
+    <view class="zsayu-filter-content">
+        <view class="zsf-title">地域选择</view>
+        <view class="zsf-list">
+            <view wx:for="{{sayuFilterList.address}}" class="zsf-item {{filterChoose.address==index?'zsf-item-unchoose':'zsf-item-choose'}}" bindtap="filterChoose" data-item-status="{{subItem.status}}" data-item-category="address" data-item-id="{{subItem.id}}" wx:for-item="subItem">{{subItem.name}}</view>
+        </view>
+    </view>
+    <view bindtap="getSayuByFilter" class="zsf-submit">确定</view>
+</view>
+<!-- 搜索 -->
+<view hidden="{{sayuSearch}}" class="zsayu-search">
+    <view class="zsayu-search-area">
+        <view bindtap="backSayuList" class="zsayu-search-back">
+            <image src="../../img/sayu/community_return_gray@3x.png" />
+        </view>
+        <view class="zsayu-search-icon">
+            <image src="../../img/sayu/seiyu_search@3x.png" />
+        </view>
+        <input type="text" value="{{inputValue}}" bindinput="getInputValue" placeholder="帖子/昵称/UID:"  placeholder-style="color:#C9C9C9" focus="true" />
+        <view bindtap="searchSayuByInput" class="zsayu-search-submit">搜索</view>
+    </view>
+    <!-- 未搜索 -->
+    <view wx-if="{{isOrSearchByInput}}">
+        <view class="zss-hot-title">热门搜索</view>
+        <view class="zss-hot-list">
+            <view wx:for="{{searchHot}}" bindtap="searchCurrentHistory" data-item-id="{{index}}" data-source="searchHot" class="zss-hot-item">{{item.keywords}}</view>
+        </view>
+        <view wx:if="{{searchHistory.length>0}}">
+            <view class="zss-history-title">历史搜索</view>
+            <view class="zss-history-list">
+                <view wx:for="{{searchHistory}}" bindtap="searchCurrentHistory" data-item-id="{{index}}" data-source="searchHistory" class="zss-history-item">
+                    <view>{{item}}</view>
+                    <image catchtap="removeSearchHistory" data-search-id="{{index}}" src="../../img/sayu/sayu_close@3x.png" />
+                </view>
+            </view>
+            <view bindtap="removeAllSearchHistory" class="zss-history-clean">
+                <image class="zss-history-clean-icon" src="../../img/sayu/global_delete2_1.png" />
+                <view>清除历史记录</view>
+            </view>
+        </view>
+    </view>
+    <!-- 搜索后 -->
+    <view wx-if="{{!isOrSearchByInput}}" class="zss-result">
+        <!-- 相关用户 -->
+       <view hidden="{{!moreUser}}" class="zsayu-result-user">
+           <view class="zsayu-result-head">
+                <view wx-if="{{searchUserList.length>0}}" class="zsru-title">用户</view>
+                <view wx-if="{{searchUserList.length==0}}" class="zsru-title" style="border:none">无相关用户</view>
+                <view hidden="{{moreNote}}" bindtap="seeMoreSearchUser" class="zsayu-result-switch"><image src="../../img/sayu/sayu_close@3x.png" /></view>
+           </view>
+           <view wx:for="{{searchUserList}}" wx-if="{{index<3||!moreNote}}" class="zsru-list">
+               <image class="zsru-avatar" src="{{item.avatar}}" />
+               <view class="zsru-user-info">
+                   <view class="zsru-user-top">
+                       <view class="zsru-user-nickname">{{item.nickname}}</view>
+                       <view class="zsru-user-gender">
+                            <image wx-if="{{item.gender==1}}" src="../../img/categories/community_post_list_man30_30@3x.png" />
+                            <image wx-if="{{item.gender==2}}" src="../../img/categories/community_post_list_woman30_30@3x.png" />
+                            <view class="zsru-user-age">{{item.birthyear}}</view>
+                       </view>
+                   </view>
+                   <view class="zsru-user-bottom">ID:{{item.uid}}</view>
+               </view>
+               <view class="zsru-user-follow">
+                   <image wx-if="{{item.isfriend==0}}" bindtap="followUser" data-item-id="{{index}}" src="../../img/sayu/seiyu_focus on@3x.png" /><!-- 42x42 -->
+                   <image wx-if="{{item.isfriend>0}}" src="../../img/sayu/seiyu_has_been_focus_on@3x.png" />
+               </view>
+           </view>
+           <view wx-if="{{searchUserList.length>2}}" bindtap="seeMoreSearchUser" class="zsru-user-more">
+               <view>查看更多用户</view>
+               <image src="../../img/sayu/sayu_user@3x.png" /><!-- 21x24 -->
+           </view>
+       </view>
+       <!-- 相关帖子 -->
+       <view hidden="{{!moreNote}}" class="zsayu-result-note">
+            <view class="zsayu-result-head">
+                <view wx-if="{{searchPostList.length>0}}" class="zsrn-title">相关帖子</view>
+                <view wx-if="{{searchPostList.length==0}}" class="zsrn-title" style="border:none">无相关帖子</view>
+                <view hidden="{{moreUser}}" bindtap="seeMoreSearchNote" class="zsayu-result-switch"><image src="../../img/sayu/sayu_close@3x.png" /></view>
+            </view>
+           <view wx:for="{{searchPostList}}" wx:if="{{index<6||!moreUser}}" class="zsrn-list">
+               <image class="zsrn-avatar" src="{{item.avatar}}" />
+               <view class="zsrn-note-info">
+                   <view class="zsrn-note-text">
+                       {{item.message}}
+                   </view>
+                   <view class="zsrn-note-other">
+                       <view class="zsrn-note-nickname">
+                           <image src="../../img/sayu/sayu_post_user@2x.png" /><!-- 14x16 -->
+                           <view>{{item.author}}</view>
+                       </view>
+                       <view class="zsrn-note-date">{{item.dateline}}</view>
+                       <view class="zsrn-note-tag">
+                           <view wx-if="{{item.isCircle==1}}" class="zsrn-note-category">
+                                {{item.circleName}}
+                           </view>
+                           <view wx-if="{{item.favid==0}}" bindtap="followNote" data-item-id="{{index}}" class="zsrn-note-unfollow">+关注</view>
+                           <view wx-if="{{item.favid==1}}" class="zsrn-note-followed">已关注</view>
+                       </view>
+                   </view>
+               </view>
+           </view>
+           <view bindtap="seeMoreSearchNote" wx-if="{{searchPostList.length>5}}" class="zsru-user-more">
+               <view>查看更多帖子</view>
+               <image src="../../img/sayu/sayu_post_more@2x.png" /><!-- 20x25 -->
+           </view>
+       </view>
+    </view>
+</view>

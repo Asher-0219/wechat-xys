@@ -1,0 +1,91 @@
+.list {
+  padding: 0 20rpx;
+}
+
+.item {
+  height: 140rpx;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  margin-right: 26rpx;
+}
+
+.name-top {
+  display: flex;
+}
+
+.name-top .name {
+  font-size: 28rpx;
+  color: #101010;
+  margin-right: 16rpx;
+}
+
+.age {
+  position: relative;
+}
+
+.age text {
+  position: absolute;
+  right: 10rpx;
+  line-height: 32rpx;
+  color: #fff;
+  font-size: 18rpx;
+}
+
+.age-img {
+  width: 64rpx;
+  height: 32rpx;
+}
+
+.focus-img {
+  margin-left: auto;
+}
+
+.focus-img image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.name-down {
+  width: 580rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;  
+    font-size: 24rpx;
+  color: #c4c4c4;
+}
+
+
+.focus-icon image {
+  margin-bottom: 8rpx;
+}
+
+.focus-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18rpx;
+  color: #ff4d8f;
+}
+
+.add-like {
+  display: inline-block;
+  width: 72rpx;
+  text-align: center;
+}
+
+.title {
+  height: 60rpx;
+  width: 100%;
+  background: #fafafa;
+  font-size: 22rpx;
+  color: #959595;
+  padding-left: 20rpx;
+  line-height: 60rpx;
+  text-align: left;
+}

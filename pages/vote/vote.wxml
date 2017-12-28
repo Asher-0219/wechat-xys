@@ -1,0 +1,100 @@
+<view wx:if="{{alert}}" class="alert">不能少于10个字符</view>
+<view wx:if="{{alert1}}" class="alert1">至少输入两个投票选项</view>
+<view class="header">
+  <text class="header-title">{{title}}</text>
+  <view class="header-choose" bindtap="change" data-dir="{{dir}}">
+    <text>选择圈子</text>
+    <image wx:if="{{dir=='right'}}" src="../../img/right.png"></image>
+    <image wx:if="{{dir=='down'}}" src="../../img/down.png"></image>
+  </view>
+</view>
+<view class="kong"></view>
+<form>
+  <view class="section">
+    <textarea class="input" bindinput="getValue" placeholder-style="color:#c4c4c4;" bindblur="bindTextAreaBlur" auto-height="true" placeholder="请输入您发表的内容(禁止附带联系方式,不然会被禁言的哦!)" />
+  </view>
+  <view class="kong"></view>
+  <block wx:for="{{inputArr}}"  wx:key="id">
+    <view class="vote">
+        <input data-index="{{item.id}}" bindinput="getInputValue" placeholder="请输入投票选项(不超过15字)"/>
+        <image catchtap="removeVote" data-index="{{item.id}}" src="../../img/community_audio_del@3x.png"></image>
+    </view>
+  </block>
+  <view class="add-vote" wx:if="{{inputArr.length<5}}" bindtap="addVote">
+    +添加投票选项
+  </view>
+  <view class="must">
+    请创建至少两个投票选项
+  </view>
+  <view class="more-choose">
+    支持多选
+    <switch data-check="{{checked}}" checked="{{check}}" bindchange="switchChange"/>
+  </view>
+  <button class="post" bindtap="post">发起投票</button>
+  <view class="footer">
+    <image class="smil" src="../../img/community_smiling_face@3x.png"></image>
+    <button class="record">
+      <image src="../../img/community_microphone@3x.png"></image>
+      按住录音
+    </button>
+    <image bindtap="at" class="contact" src="../../img/community_contact_with_others@3x.png"></image>
+  </view>
+</form>
+<view class="circle" wx-if="{{dir=='down'}}">
+  <view class="here-circle">
+    <view class="circle-title">当前圈子</view>
+    <view class="circle-list" data-fid="{{item.fid}}" data-name="{{hereCircle.name}}" bindtap="chooseCircle">
+      <view class="line"></view>
+      <image class="circle-icon" src="{{hereCircle.icon}}"></image>
+      <view class="circle-content">
+        <text class="circle-name">{{hereCircle.name}}</text>
+        <text class="circle-hard">硬度：{{hereCircle.hardness}}\n</text>
+        <text class="circle-dis">{{hereCircle.description}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="my-circle">
+    <view class="circle-title">我的圈子</view>
+    <block wx:for="{{myList}}" wx:key="{{index}}">
+      <view class="circle-list" data-name="{{item.name}}" data-fid="{{item.fid}}" bindtap="chooseCircle">
+        <view class="line"></view>
+        <image class="circle-icon" src="{{item.icon}}"></image>
+        <view class="circle-content">
+          <text class="circle-name">{{item.name}}</text>
+          <text class="circle-hard">硬度：{{item.hardness}}\n</text>
+          <text class="circle-dis">{{item.description}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="hot-circle">
+    <view class="circle-title">热门圈子</view>
+    <block wx:for="{{qzList}}" wx:key="{{index}}">
+      <view class="line"></view>
+      <view class="circle-list" data-fid="{{item.fid}}" data-name="{{item.name}}" bindtap="chooseCircle">
+        <image class="circle-icon" src="{{item.icon}}"></image>
+        <view class="circle-content">
+          <text class="circle-name">{{item.name}}</text>
+          <text class="circle-hard">硬度：{{item.hardness}}\n</text>
+          <text class="circle-dis">{{item.description}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view wx:if="{{close}}" class="shade" style="width:{{windowWidth}}px;height:{{windowHeight}}px;">
+  <view class="shade-content">
+    <view class="shade-title">发帖必读</view>
+    <view class="shade-text">
+      <view>1、不能发表违反宪法确定的基本原则的内容;\n</view>
+      <view>2、不得发表含有法律、行政法规禁止的其他内容;\n</view>
+      <view>3、不能发表有侮辱攻击他人和带有政治性攻击帖子和评论;\n</view>
+      <view>4、不能发表无意义的数据、字母等恶意刷屏的帖子和评论;\n</view>
+      <view>5、严禁发表淫秽、色青信息和小广告诱导用户的帖子和评论;\n</view>
+      <view>6、帖子、回复均不得漏点哦;\n</view>
+      <view>7、帖子、回复不得带有链接。\n</view>
+    </view>
+    <text class="shade-text-down">为了给大家一个好的平台，严格自觉遵守，有谁违反了群规，社长将删帖、禁言，情节严重的将封号处理。欢迎大家积极举报淫秽、色情等不文明行为。</text>
+    <view class="shade-close" bindtap="closeShade">我知道了</view>
+  </view>
+</view>

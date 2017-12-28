@@ -1,0 +1,20 @@
+<view hidden="{{!showImg}}" class="xys-mask" bindtap="imageView">
+  <view class="xys-img-wrapper">
+    <view class="xys-img-container">
+      <view wx-if="{{imgUrls.length>1}}" class="xys-img-count">{{currentImgIndex}}/{{imgUrls.length}}
+      </view>
+      <swiper current="{{currentImgChoose}}" circular="true" bindchange="imageIndexChage" style="height:100%">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image style="width:{{imageWidth}}px;height:{{imageHeight}}px;margin-left:{{imageMarginLeft}}px;margin-top:{{imageMarginTop}}px" src="{{item.filePath}}" bindload="imageLoad" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view class="imgs">
+    <block wx:for="{{imgUrls}}" wx:for-index="index">
+        <image catchtap="imageView" mode="aspectFill" data-img-obj="{{imgs}}" data-img-index="{{index}}" data-img-src="{{index+1}}"  src="{{item.filePath}}"></image>
+    </block>
+</view>

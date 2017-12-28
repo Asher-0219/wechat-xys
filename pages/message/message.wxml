@@ -1,0 +1,45 @@
+
+<!--pages/message/message.wxml-->
+<view class="list">
+  <view class="item">
+    <view class="avatar">
+      <image src="/img/message/message_list_logo@2x.png"></image>
+    </view>
+    <view class="info">
+      <view class="name">性用社小秘书</view>
+      <view class="message">[有什么问题可以咨询我哦]</view>
+    </view>
+    <!-- <view class="detail">
+      <view wx:if="{{sessions.teamSessions['p2p-4806']&&sessions.teamSessions['p2p-4806'].unread>0}}" class="mag-num">{{sessions.teamSessions['p2p-4806'].unread}}</view>
+    </view> -->
+  </view>
+  <view class="item" bindtap="showMessage">
+    <view class="avatar">
+      <image src="/img/message/message_list_core@2x.png"></image>
+    </view>
+    <view class="info">
+      <view class="name">消息中心</view>
+      <view class="message">支付,社区,商城,系统消息</view>
+    </view>
+    <view class="detail">
+      <view wx:if="{{sessions.teamSessionsUnread>0}}" class="mag-num">{{sessions.teamSessionsUnread}}</view>
+    </view>
+  </view>
+  <view class="item" bindtap="showChat" data-session-id="{{item.id}}" wx:for="{{sessions.personSessions}}">
+    <view class="avatar" catchtap="goUserCenter" data-uid="{{item.id}}">
+      <image src="{{users[item.id].avatar}}"></image>
+    </view>
+    <view class="info">
+      <view class="name">
+        <text>{{users[item.id].nick}}</text>
+        <image src="http://appfile.xys.ren/upload/vipusergroup/16031483757831.png"></image>
+      </view>
+      <view wx:if="{{item.lastMsg.type=='text'}}" class="message">{{item.lastMsg.text}}</view>
+      <view wx:if="{{item.lastMsg.type=='image'}}" class="message">[图片]</view>
+    </view>
+      <view class="detail">
+        <view class="time">{{item.updateTime}}</view>
+        <view wx:if="{{item.unread>0}}" class="mag-num">{{item.unread}}</view>
+      </view>
+  </view>
+</view>

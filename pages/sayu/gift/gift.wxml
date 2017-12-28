@@ -1,0 +1,11 @@
+<view class="gifts"></view>
+<block wx:for="{{giftList}}" wx:key="{{index}}">
+  <view class="gift-item">
+    <image class="gift-icon" src="{{item.icon}}"></image>
+    <view class="name">
+      <text class="name-text">{{item.name}}</text>
+      <text class="num">数量：{{item.num}}{{item.unit}}</text>
+    </view>
+    <view class="charm">+{{item.charm}}魅力值</view>
+  </view>
+</block>

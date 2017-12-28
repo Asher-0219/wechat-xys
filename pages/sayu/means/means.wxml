@@ -1,0 +1,208 @@
+<view class="isFav" wx:if="{{addlike}}">关注成功</view>
+<view class="isFav" wx:if="{{removelike}}">取消关注成功</view>
+<view hidden="{{!showImgs}}" class="xys-mask" bindtap="imageViews">
+  <view class="xys-img-wrapper">
+    <view class="xys-img-container">
+      <view wx-if="{{imgUrls.length>1}}" class="xys-img-count">{{currentImgIndex}}/{{imgUrls.length}}
+      </view>
+      <swiper current="{{currentImgChoose}}" circular="true" bindchange="imageIndexChage" style="height:100%">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image style="width:{{imageWidth}}px;height:{{imageHeight}}px;margin-left:{{imageMarginLeft}}px;margin-top:{{imageMarginTop}}px" src="{{item.filePath}}" bindload="imageLoad" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view hidden="{{!showImg}}" class="xys-mask" bindtap="imageView">
+  <view class="xys-img-wrapper">
+    <view class="xys-img-container">
+      <image class="bigImg" src="{{imgSrc}}" bindload="imageLoad" />
+    </view>
+  </view>
+</view>
+<view class="header">
+  <view class="header-top">
+    <image catchtap="imageView" data-img-src="{{data.lzavatarbig}}" class="avatar" src="{{data.lzavatar}}"></image>
+    <view class="level-box">
+      <image class="level" src="{{data.lzstarsIcon}}"></image>
+      <view class="level-bg level-{{data.lzstars}}">
+        <text>{{data.honor}}</text>
+      </view>
+    </view>
+    <view class="song">
+      <audio src="{{data.voiceFile}}" bindended="playEnd" id="catel-audio">
+        <image class="voice-img" catchtap="voicePlay" src="{{voiceState}}" />
+        <text>{{data.voiceseconds}}”</text>
+      </audio>
+    </view>
+  </view>
+  <view class="header-content">
+    <text class="name">{{data.lzname}}</text>
+    <image wx-if="{{data.goodseiyuu==1}}" src="/img/categories/my_profile_famous.png" />
+    <image wx-if="{{data.newUser==1}}" src="/img/categories/my_profile_new_type.png" />
+  </view>
+  <view class="header-down">
+    <view class="charm">
+      <image src="/img/the_buildinglord_personal_center_charm.png"></image>
+      <text class="charm-text">魅力值</text>
+      <text class="value">{{data.charm}}</text>
+    </view>
+    <view class="tuhao">
+      <image src="/img/the_buildinglord_personal_center_tycoon.png"></image>
+      <text class="tuhao-text">土豪值</text>
+      <text class="value">{{data.tuhao}}</text>
+    </view>
+  </view>
+</view>
+<view class="fans-box">
+  <view class="item fans">
+    <text class="title-text">粉丝</text>
+    <text class="num">{{data.weibofeng}}</text>
+  </view>
+  <view class="item like">
+    <text class="title-text">关注</text>
+    <text class="num">{{data.weiboguan}}</text>
+  </view>
+  <view class="item zan">
+    <text class="title-text">点赞</text>
+    <text class="num">{{data.zans}}</text>
+  </view>
+  <view class="item visit">
+    <text class="title-text">访客</text>
+    <text class="num">{{data.visitorTotal}}</text>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="age-box">
+  <view class="age">
+    <image class="gender" wx-if="{{data.gender==1}}" src="/img/categories/community_post_list_man30_30@3x.png" />
+    <image class="gender" wx-if="{{data.gender==2}}" src="/img/categories/community_post_list_woman30_30@3x.png" />
+    <text>{{data.nowyear}}</text>
+  </view>
+  <view class="age-item">{{data.constellation}}</view>
+  <view class="age-item">{{data.affectivestatus}}</view>
+  <view class="age-item">{{data.nowreside}}</view>
+  <view class="age-item id">ID:{{data.voipaccount.uid}}</view>
+  <view class="age-item ul" wx:if="{{data.ul>0}}">U龄:{{data.ul}}</view>
+</view>
+<view class="kong"></view>
+
+<!--相册-->
+<view class="photos">
+  <view class="title">相册</view>
+  <view wx:if="{{imgs.length==0}}" class="no-photo">
+    <text>ta还没有上传照片哦</text>
+  </view>
+  <view class="photos-list">
+    <block wx:for="{{imgs}}" wx:for-index="index">
+      <image catchtap="imageViews" mode="aspectFill" data-img-obj="{{imgs}}" data-img-index="{{index}}" data-img-src="{{index+1}}" class="imgs" src="{{item.filePath}}"></image>
+    </block>
+  </view>
+  <image wx:if="{{imgs!=''}}" catchtap="showMore" class="more" src="/img/community_return_2.png"></image>
+</view>
+<view class="kong"></view>
+
+<!--资料-->
+<view class="data-list">
+  <view class="title">资料</view>
+  <view class="data-item">
+    <text class="content-title">个性签名</text>
+    <text>{{data.suggest}}</text>
+    <text wx:if="{{data.suggest==''}}">暂无个性签名</text>
+  </view>
+  <view class="data-item">
+    <text class="content-title">入驻专线</text>
+    <text class="honor">{{data.honor}}</text>
+  </view>
+  <view class="data-item">
+    <text class="content-title">通话时长</text>
+    <text>{{data.icon.totaltime}}分钟</text>
+  </view>
+  <view class="data-item">
+    <text class="content-title">接通率</text>
+    <text>接通率{{data.voiceLv}}%</text>
+  </view>
+  <view class="data-item">
+    <text class="content-title">收到星评</text>
+    <image class="medal" src="/img/the_buildinglord_personal_center_star_rating.png"></image>
+    <text class="start">{{data.gctotal}}</text>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="gifts">
+  <view class="title">礼物</view>
+  <view bindtap="allGift" class="gift-list">
+    <block wx:for="{{giftList}}" wx:key="{{index}}">
+      <view class="gift-item">
+        <image src="{{item.icon}}"></image>
+        <text>{{item.num}}</text>
+      </view>
+    </block>
+    <image class="more" data-id="{{uid}}" src="/img/community_return_2.png"></image>
+  </view>
+</view>
+<view class="kong"></view>
+<view class="footer">
+  <view class="footer-item" bindtap="goChatPage">
+    <image src="/img/the_buildinglord_personal_center_message.png"></image>
+  </view>
+  <view class="footer-item">
+    <image src="/img/the_buildinglord_personal_center_gift_box.png"></image>
+  </view>
+  <view class="footer-item phone">
+    <image src="/img/the_buildinglord_personal_center_make_a_phone_call.png"></image>
+    <text>{{data.voiceTariff}}币/分</text>
+  </view>
+  <view class="footer-item">
+    <image bindtap="addLike" wx:if="{{like==0}}" src="/img/the_buildinglord_personal_center_focus_on.png"></image>
+    <image bindtap="removeLike" wx:if="{{like==1}}" src="/img/the_buildinglord_personal_center_focus_on_click.png"></image>
+  </view>
+  <view class="footer-item">
+    <image src="/img/the_buildinglord_personal_center_share.png"></image>
+  </view>
+</view>
+
+<!--动态-->
+<view class="dynamic">
+  <view class="title">动态</view>
+  <view wx:if="{{thread.length==0}}" class="no-dynamic">
+    <text>ta还没有任何动态哦</text>
+  </view>
+  <view wx:if="{{thread.lenght!=0}}" class="all">
+    <text>查看全部</text>
+    <image class="more" src="/img/community_return_2.png"></image>
+  </view>
+  <view wx:if="{{thread.length!=0}}">
+    <view class="thread-list">
+      <view class="thread-text">
+        <text data-fid="{{thread[0].fid}}" class="thread-title">{{thread[0].fidname}}</text>
+      </view>
+    </view>
+    <view bindtap="showTid" data-tid="{{thread[0].tid}}">
+      <text class="thread-message">{{thread[0].message}}</text>
+      <view class="date">
+        <text class="date-text">{{thread[0].dateline}}</text>
+        <view class="reply">
+          <image class="reply-img" src="/img/categories/community_comments@3x.png"></image>
+          <text class="reply-num">{{thread[0].replies}}</text>
+          <image class="zan-img" src="/img/categories/post_details_good@3x.png"></image>
+          <text>{{zan}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--没有关注提示-->
+<view wx:if="{{alert}}" class="alert">
+  <view class="alert-content">
+    <view class="alert-top">
+      <text>关注ta就能进入相册查看更多照片喽</text>
+    </view>
+    <view bindtap="hideAlert" class="alert-down">
+      <text>我知道啦</text>
+    </view>
+  </view>
+</view>

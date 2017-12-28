@@ -1,0 +1,82 @@
+/* pages/me/myWallet/myWallet.wxss */
+
+.header {
+  height: 450rpx;
+  width: 100%;
+  background: url('/img/myWallet/personal_my_wallet_background.png') center center no-repeat;
+  text-align: center;
+  padding-top: 75rpx;
+  color: #fff;
+}
+
+.ub {
+  font-size: 72rpx;
+  font-weight: bold;
+  margin-bottom: 34rpx;
+}
+
+.ub-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 46rpx;
+}
+
+.header-text {
+  font-size: 24rpx;
+  margin-bottom: 66rpx;
+}
+
+.top-up {
+  height: 80rpx;
+  width: 240rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  color: #fd659c;
+  line-height: 80rpx;
+  margin: 0 auto;
+}
+.list:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.item {
+  text-align: center;
+  font-size: 30rpx;
+  color: #303030;
+  float: left;
+  width: 250rpx;
+  height: 250rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dfdfdf;
+}
+.item1,.item2,.item4,.item5{
+    border-right:1px solid #dfdfdf;
+}
+.item image {
+  margin-bottom: 32rpx;
+  margin-top: 75rpx;
+}
+
+.item1 image {
+  width: 48rpx;
+  height: 41rpx;
+}
+
+.item2 image {
+  width: 50rpx;
+  height: 40rpx;
+}
+
+.item3 image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.item4 image {
+  width: 45rpx;
+  height: 43rpx;
+}

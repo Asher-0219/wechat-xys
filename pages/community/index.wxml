@@ -1,0 +1,112 @@
+<!-- 社区 -->
+<!-- 顶部tab -->
+<view class="com-tab">
+  <view class="com-message">
+    <image src="../../img/categories/community_news_click@3x.png" />
+  </view>
+  <view class="com-navbar">
+    <view class="xys-navbar">
+      <block wx:for="{{tabs}}" wx:key="{{index}}">
+        <view id="{{index}}" bindtap="tabClick" class="xys-navbar-item {{activeIndex==index?'xys-navbar-item-on':''}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 推荐 -->
+<view class="xys-tab {{activeIndex==0?'xys-tab-active':''}}">推荐</view>
+<!-- 发现 -->
+<view class="xys-tab {{activeIndex==1?'xys-tab-active':''}}">
+  <swiper indicator-dots="true" class="banner" autoplay="true" interval="4000" duration="1000">
+    <swiper-item wx:for="{{imgs}}" bindtap="goPostDetail" wx:key="{{index}}" data-post-id="{{item.typeId}}">
+      <view class="swiper-img" style="background-image:url({{item.imgUrl}});background-size:cover"></view>
+    </swiper-item>
+  </swiper>
+  <view class="ht">
+    <image class="ht-img" src="../../img/community_activity_photos@3x.png" bindtap="topics"></image>
+    <view class="clone"></view>
+    <view class="ht-right" bindtap="topic" data-id="{{topicFid}}">
+      <view class="top">#{{huati}}#</view>
+      <view class="down">
+        <image class="down-icon" src="../../img/community_comments@3x.png"></image>
+        <swiper autoplay="true" interval="4000" duration="1000">
+          <swiper-item block wx:for="{{topic}}" wx:key="{{index}}">
+              <view class="down-text">
+                {{item.lastpost}}
+              </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <view class="kong"></view>
+  <view class="tg">
+    <view class="tg-top">官方通告</view>
+    <view class="tg-right" bindtap="public">
+      <text>往期通告</text>
+      <image class="tg-img" src="../../img/community_the_play@3x.png"></image>
+    </view>
+    <view class="tg-content1 tg-content">
+      <image class="tg-icon1 icon" src="../../img/community_announcement@3x.png"></image>
+      <view class="tg-text" data-post-id="{{tid1}}" bindtap="goPostDetail">{{text2}}</view>
+    </view>
+    <view class="clo"></view>
+    <view class="tg-content2 tg-content">
+      <image class="tg-icon2 icon" src="../../img/community_public_announcement@3x.png"></image>
+      <view class="tg-text" data-post-id="{{tid2}}" bindtap="goPostDetail">{{text1}}</view>
+      <text></text>
+    </view>
+  </view>
+  <view class="kong"></view>
+  <view class="sy">
+    <view>声优在线</view>
+    <scroll-view scroll-x="true">
+      <view class="sy-list">
+        <view class="sy-item" wx:for="{{sylist}}" wx:key="{{index}}" data-id="{{item.uid}}">
+          <view class="sy-bg">
+            <view class="mh">
+              <image class="sy-mh" src="{{item.avatar}}"></image>
+            </view>
+            <image class="sy-sm-icon" src="../../img/community_online.png"></image>
+            <image class="sy-down-icon" src="../../img/community_rectangle@2x.png">
+              <image class="sy-down-nv" src="../../img/community_woman@2x.png"></image>
+              <view class="sy-down-text">{{item.nowYear}}</view>
+            </image>
+            <view class="sy-icon" style="background-image:url({{item.avatar}});background-size:cover"></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="kong"></view>
+  <view class="myqz">
+    <view class="qz-title">我的圈子（{{myList.length}}）</view>
+    <block wx:for="{{myList}}" wx:key="{{index}}">
+      <view class="qz-list item-{{index}}" data-id="{{item.fid}}" data-name="{{item.name}}" bindtap="showCate">
+        <image class="qz-icon" src="{{item.icon}}"></image>
+        <view class="qz-content">
+          <view class="qz-name">{{item.name}}</view>
+          <view class="qz-hard">硬度: {{item.hardness}}</view>
+          <view class="qz-dis">{{item.description}}</view>
+        </view>
+        <view class="qz-clone"></view>
+      </view>
+    </block>
+    <view class="my-no" wx:if="{{myList.length==0}}">你还没有关注圈子...</view>
+  </view>
+  <view class="kong"></view>
+  <view class="qz">
+    <view class="qz-title">全部圈子（{{qzList.length}}）</view>
+    <block wx:for="{{qzList}}" wx:key="{{index}}">
+      <view class="qz-list item-{{index}}" data-id="{{item.fid}}" data-name="{{item.name}}" bindtap="showCate">
+        <image class="qz-icon" src="{{item.icon}}"></image>
+        <view class="qz-content">
+          <view class="qz-name">{{item.name}}</view>
+          <view class="qz-hard">硬度: {{item.hardness}}</view>
+          <view class="qz-dis">{{item.description}}</view>
+        </view>
+        <view class="qz-clone"></view>
+        <image catchtap="addLike" data-index="{{index}}" data-id="{{item.fid}}" class="gz" src="../../img/community_circle_attention@3x.png"></image>
+      </view>
+    </block>
+  </view>
+</view>
